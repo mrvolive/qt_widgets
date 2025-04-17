@@ -2,3 +2,4 @@ build
 .qmake.stash
 *.o
 .cache/clangd/index
+.tmp/droit_but1.0.0
