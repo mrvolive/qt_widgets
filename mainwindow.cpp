@@ -88,7 +88,7 @@ void MainWindow::createWidgets()
     setCentralWidget(_main_widget.get());
     
     // Button
-    _button.reset(new QPushButton{QString{"Press"}, _main_widget.get()});
+    _button.reset(new QPushButton{QString{"Search"}, _main_widget.get()});
     
     // Text area
     _text_edit.reset(new QLineEdit{_main_widget.get()});
