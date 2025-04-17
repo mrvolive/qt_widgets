@@ -1,18 +1,19 @@
 #include "mainwindow.h"
-#include <QWidget>
+#include <QGroupBox>
 #include <QLineEdit>
-#include <QPushButton>
 #include <QListWidget>
-#include <QStringList>
-#include <QVBoxLayout>
 #include <QMenu>
 #include <QMenuBar>
-#include <QGroupBox>
+#include <QPushButton>
+#include <QStringList>
+#include <QVBoxLayout>
+#include <QWidget>
 
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent) {
+    : QMainWindow(parent)
+{
     setWindowTitle(QString{"Coin²"});
     // Create menus
     _file_menu = menuBar()->addMenu(QString{tr("&File")});

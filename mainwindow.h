@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
     QScopedPointer<QPushButton> _button;
     QScopedPointer<QLineEdit> _text_edit;
     QScopedPointer<QListWidget> _list;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
