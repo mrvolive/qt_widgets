@@ -1,3 +1,4 @@
 build
 .qmake.stash
 *.o
+.cache/clangd/index
