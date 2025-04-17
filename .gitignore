@@ -3,3 +3,6 @@ build
 *.o
 .cache/clangd/index
 .tmp/droit_but1.0.0
+ui_mainwindow.h
+moc_mainwindow.cpp
+moc_predefs.h
