@@ -7,13 +7,21 @@
 #include "qobject.h"
 #include <QMainWindow>
 #include <QScopedPointer>
+
 class QApplication;
-class QMenu;
 class QGroupBox;
-class QPushButton;
+class QHBoxLayout;
+class QLabel;
 class QLineEdit;
 class QListWidget;
-class QLabel;
+class QMenu;
+class QMenuBar;
+class QPixmap;
+class QPushButton;
+class QStringList;
+class QVBoxLayout;
+class QWidget;
+class QMessageBox;
 
 /**
  * @class MainWindow

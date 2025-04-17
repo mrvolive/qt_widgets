@@ -181,7 +181,7 @@ void MainWindow::onQuitTriggered()
 void MainWindow::onPreferencesTriggered()
 {
     //TODO: afficher la boîte de dialogue des préférences
-    QMessageBox::information(this, tr("Préférences"), tr("Boîte de dialogue des préférences (à implémenter)"));
+    QMessageBox::information(this, tr("Préférences"), tr("Boîte de dialogue des préférences"));
 }
 
 /**
@@ -192,7 +192,7 @@ void MainWindow::onPreferencesTriggered()
 void MainWindow::onManualTriggered()
 {
     //TODO: afficher le manuel d'utilisation
-    QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation (à implémenter)"));
+    QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation"));
 }
 
 /**

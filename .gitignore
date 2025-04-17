@@ -1,4 +1,5 @@
 build
+droit_but
 .qmake.stash
 *.o
 .cache/clangd/index
