@@ -38,12 +38,12 @@ private:
   // Menus
   QMenu *_file_menu; ///< Menu Fichier
   QMenu *_help_menu; ///< Menu Aide
-  
+
   // Actions
-  QAction *_pref_action; ///< Action pour l'item de menu Préférences
-  QAction *_quit_action; ///< Action pour l'item de menu Quit
+  QAction *_pref_action;   ///< Action pour l'item de menu Préférences
+  QAction *_quit_action;   ///< Action pour l'item de menu Quit
   QAction *_manual_action; ///< Action pour l'item de menu Manual
-  QAction *_about_action; ///< Action pour l'item de menu About
+  QAction *_about_action;  ///< Action pour l'item de menu About
 
   // Widgets
   QScopedPointer<QGroupBox> _main_widget; ///< Widget principal contenant tout
@@ -94,32 +94,40 @@ private:
 
 private slots:
   /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
-     * 
-     * Ferme l'application proprement.
-     */
-    void onQuitTriggered();
-    
-    /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
-     * 
-     * Affiche la boîte de dialogue des préférences.
-     */
-    void onPreferencesTriggered();
-    
-    /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
-     * 
-     * Affiche le manuel d'utilisation.
-     */
-    void onManualTriggered();
-    
-    /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
-     * 
-     * Affiche la boîte de dialogue "À propos".
-     */
-    void onAboutTriggered();
+   * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
+   *
+   * Ferme l'application proprement.
+   */
+  void onQuitTriggered();
+
+  /**
+   * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
+   *
+   * Affiche la boîte de dialogue des préférences.
+   */
+  void onPreferencesTriggered();
+
+  /**
+   * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
+   *
+   * Affiche le manuel d'utilisation.
+   */
+  void onManualTriggered();
+
+  /**
+   * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
+   *
+   * Affiche la boîte de dialogue "À propos".
+   */
+  void onAboutTriggered();
+
+  /**
+   * @brief Slot appelé lorsque l'utilisateur clique sur le bouton Search.
+   *
+   * Si le champ de texte n'est pas vide, remplit la liste avec le texte
+   * répété 5 fois et concaténé avec un numéro de 1 à 5.
+   */
+  void onSearchButtonClicked();
 
 public:
   /**
@@ -138,4 +146,3 @@ public:
    */
   ~MainWindow();
 };
-

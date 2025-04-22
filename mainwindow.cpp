@@ -12,12 +12,12 @@
 #include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
+#include <QMessageBox>
 #include <QPixmap>
 #include <QPushButton>
 #include <QStringList>
 #include <QVBoxLayout>
 #include <QWidget>
-#include <QMessageBox>
 
 using namespace std;
 
@@ -147,63 +147,90 @@ void MainWindow::setupLayouts() {
 
 /**
  * @brief Connecte les signaux aux slots appropriés.
- * 
+ *
  * Cette méthode établit les connexions entre les signaux émis par
  * les widgets (comme les actions de menu) et les slots qui les traitent.
  */
-void MainWindow::connectSignalsSlots()
-{
-    // Connexion des actions du menu File
-    connect(_quit_action, &QAction::triggered, this, &MainWindow::onQuitTriggered);
-    connect(_pref_action, &QAction::triggered, this, &MainWindow::onPreferencesTriggered);
-    
-    // Connexion des actions du menu Help
-    connect(_manual_action, &QAction::triggered, this, &MainWindow::onManualTriggered);
-    connect(_about_action, &QAction::triggered, this, &MainWindow::onAboutTriggered);
+void MainWindow::connectSignalsSlots() {
+  // Connexion des actions du menu File
+  connect(_quit_action, &QAction::triggered, this,
+          &MainWindow::onQuitTriggered);
+  connect(_pref_action, &QAction::triggered, this,
+          &MainWindow::onPreferencesTriggered);
+
+  // Connexion des actions du menu Help
+  connect(_manual_action, &QAction::triggered, this,
+          &MainWindow::onManualTriggered);
+  connect(_about_action, &QAction::triggered, this,
+          &MainWindow::onAboutTriggered);
+
+  // Connexion du bouton Search
+  connect(_button.get(), &QPushButton::clicked, this,
+          &MainWindow::onSearchButtonClicked);
 }
 
 /**
  * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
- * 
+ *
  * Ferme l'application proprement.
  */
-void MainWindow::onQuitTriggered()
-{
-    // Ferme l'application
-    QApplication::quit();
+void MainWindow::onQuitTriggered() {
+  // Ferme l'application
+  QApplication::quit();
 }
 
 /**
  * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
- * 
+ *
  * Affiche la boîte de dialogue des préférences.
  */
-void MainWindow::onPreferencesTriggered()
-{
-    //TODO: afficher la boîte de dialogue des préférences
-    QMessageBox::information(this, tr("Préférences"), tr("Boîte de dialogue des préférences"));
+void MainWindow::onPreferencesTriggered() {
+  // TODO: afficher la boîte de dialogue des préférences
+  QMessageBox::information(this, tr("Préférences"),
+                           tr("Boîte de dialogue des préférences"));
 }
 
 /**
  * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
- * 
+ *
  * Affiche le manuel d'utilisation.
  */
-void MainWindow::onManualTriggered()
-{
-    //TODO: afficher le manuel d'utilisation
-    QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation"));
+void MainWindow::onManualTriggered() {
+  // TODO: afficher le manuel d'utilisation
+  QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation"));
 }
 
 /**
  * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
- * 
+ *
  * Affiche la boîte de dialogue "À propos".
  */
-void MainWindow::onAboutTriggered()
-{
-    QMessageBox::about(this, tr("À propos de Droit_But"),
-                       tr("Droit_But v1.0\n\n"
-                          "Une application pour apprendre QT !\n"
-                          "© 2025 - Olivier - Tous droits réservés."));
+void MainWindow::onAboutTriggered() {
+  QMessageBox::about(this, tr("À propos de Droit_But"),
+                     tr("Droit_But v1.0\n\n"
+                        "Une application pour apprendre QT !\n"
+                        "© 2025 - Olivier - Tous droits réservés."));
+}
+
+/**
+ * @brief Slot appelé lorsque l'utilisateur clique sur le bouton Search.
+ *
+ * Si le champ de texte n'est pas vide, remplit la liste avec le texte
+ * répété 5 fois et concaténé avec un numéro de 1 à 5.
+ */
+void MainWindow::onSearchButtonClicked() {
+  // Récupérer le texte du champ de saisie
+  QString text = _text_edit->text().trimmed();
+
+  // Vérifier si le texte n'est pas vide
+  if (!text.isEmpty()) {
+    // Vider la liste actuelle
+    _list->clear();
+
+    // Ajouter 5 entrées avec le texte suivi d'un numéro
+    for (int i = 1; i <= 5; i++) {
+      QString itemText = text + " " + QString::number(i);
+      _list->addItem(itemText);
+    }
+  }
 }
