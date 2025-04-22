@@ -6,18 +6,13 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QGroupBox>
-#include <QHBoxLayout>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
-#include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
-#include <QPixmap>
 #include <QPushButton>
-#include <QStringList>
 #include <QVBoxLayout>
-#include <QWidget>
 
 using namespace std;
 
@@ -105,12 +100,8 @@ void MainWindow::createWidgets() {
   _list->addItems(places);
 
   // Widget pour la carte
-  _map_widget.reset(new QLabel{_main_widget.get()});
+  _map_widget.reset(new MapWidget{_main_widget.get()});
   _map_widget->setMinimumSize(300, 300);
-  _map_widget->setAlignment(Qt::AlignCenter);
-  _map_widget->setText("Carte du monde");
-  _map_widget->setStyleSheet(
-      "border: 1px solid black; background-color: #f0f0f0;");
 }
 
 /**

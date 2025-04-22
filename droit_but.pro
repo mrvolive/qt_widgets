@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,10 +10,12 @@ CONFIG += c++20
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp\
+    mapwidget.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h\
+    mapwidget.h
 
 FORMS += \
     mainwindow.ui

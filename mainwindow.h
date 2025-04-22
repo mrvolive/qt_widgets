@@ -1,27 +1,24 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
 /**
  * @file mainwindow.h
  * @brief Définition de la classe MainWindow qui gère la fenêtre principale de
  * l'application.
  */
-
 #include "qobject.h"
+#include "mapwidget.h"
 #include <QMainWindow>
-#include <QScopedPointer>
 
 class QApplication;
 class QGroupBox;
-class QHBoxLayout;
 class QLabel;
 class QLineEdit;
 class QListWidget;
-class QMenu;
 class QMenuBar;
-class QPixmap;
-class QPushButton;
-class QStringList;
-class QVBoxLayout;
-class QWidget;
 class QMessageBox;
+class QPushButton;
+class QVBoxLayout;
 
 /**
  * @class MainWindow
@@ -50,7 +47,7 @@ private:
   QScopedPointer<QPushButton> _button;    ///< Bouton "Search"
   QScopedPointer<QLineEdit> _text_edit;   ///< Champ de texte éditable
   QScopedPointer<QListWidget> _list;      ///< Liste des villes
-  QScopedPointer<QLabel> _map_widget; ///< Widget affichant la carte du monde
+  QScopedPointer<MapWidget> _map_widget; ///< Widget affichant la carte
 
 private:
   /**
@@ -146,3 +143,4 @@ public:
    */
   ~MainWindow();
 };
+#endif

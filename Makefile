@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = droit_but1.0.0
 DISTDIR = /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/.tmp/droit_but1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -pipe -O2 -flto=8 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
-LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5Positioning.so /usr/lib/libQt5Core.so -lGL -lpthread   
 AR            = gcc-ar cqs
 RANLIB        = 
 SED           = sed
@@ -53,10 +53,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		mainwindow.cpp moc_mainwindow.cpp
+		mainwindow.cpp \
+		mapwidget.cpp moc_mainwindow.cpp \
+		moc_mapwidget.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		mapwidget.o \
+		moc_mainwindow.o \
+		moc_mapwidget.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -213,8 +217,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		droit_but.pro mainwindow.h main.cpp \
-		mainwindow.cpp
+		droit_but.pro mainwindow.h \
+		mapwidget.h main.cpp \
+		mainwindow.cpp \
+		mapwidget.cpp
 QMAKE_TARGET  = droit_but
 DESTDIR       = 
 TARGET        = droit_but
@@ -556,8 +562,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h mapwidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp mapwidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -590,13 +596,19 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mapwidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mapwidget.cpp
 moc_mainwindow.cpp: mainwindow.h \
+		mapwidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+
+moc_mapwidget.cpp: mapwidget.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mapwidget.h -o moc_mapwidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -619,14 +631,22 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-main.o: main.cpp mainwindow.h
+main.o: main.cpp mainwindow.h \
+		mapwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-mainwindow.o: mainwindow.cpp mainwindow.h
+mainwindow.o: mainwindow.cpp mainwindow.h \
+		mapwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
+
+mapwidget.o: mapwidget.cpp mapwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapwidget.o mapwidget.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_mapwidget.o: moc_mapwidget.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mapwidget.o moc_mapwidget.cpp
 
 ####### Install
 
