@@ -69,11 +69,6 @@ QPair<double, double> MapWidget::screenToLonLat(const QPoint& screenPos)
     // Taille standard d'une tuile
     const int tileSize = 256;
 
-    // Calculer le décalage pour centrer la tuile centrale
-    int factor = 4; // Même facteur que dans renderFullView
-    int offsetX = (width() * factor - width()) / 2;
-    int offsetY = (height() * factor - height()) / 2;
-
     // Position du centre de l'écran
     int centerX = width() / 2;
     int centerY = height() / 2;
@@ -400,3 +395,21 @@ void MapWidget::wheelEvent(QWheelEvent* event)
     // Utiliser le contrôleur pour gérer le zoom
     _mapController->zoomMap(event->angleDelta().y());
 }
+
+void MapWidget::mouseDoubleClickEvent(QMouseEvent* event)
+{
+    if (event->button() == Qt::LeftButton) {
+        // Récupérer les coordonnées géographiques du point cliqué
+        QPair<double, double> coords = screenToLonLat(event->pos());
+        double lon = coords.first;
+        double lat = coords.second;
+        
+        // Centrer la carte sur ce point
+        _mapController->setCenter(lon, lat);
+        
+        // Zoomer d'un niveau
+        int currentZoom = _mapModel->getZoom();
+        _mapController->setZoom(currentZoom + 1);
+    }
+}
+

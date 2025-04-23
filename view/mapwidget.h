@@ -37,6 +37,13 @@ private:
     QPoint _dragOffset; ///< Décalage actuel pendant le glissement
     bool _needFullRefresh; ///< Indique si un fullRefresh est nécessaire
 
+protected:
+    /**
+     * @brief Gère l'événement de double-clic pour zoomer sur un point.
+     * @param event Événement de double-clic
+     */
+    void mouseDoubleClickEvent(QMouseEvent* event) override;
+
 public:
     /**
      * @brief Constructeur du widget d'affichage de carte.

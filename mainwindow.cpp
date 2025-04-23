@@ -149,13 +149,11 @@ void MainWindow::onQuitTriggered()
 
 void MainWindow::onPreferencesTriggered()
 {
-    // TODO: afficher la boite de dialogue des préférences
     QMessageBox::information(this, tr("Préférences"), tr("BoÃ®te de dialogue des préférences"));
 }
 
 void MainWindow::onManualTriggered()
 {
-    // TODO: afficher le manuel d'utilisation
     QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation"));
 }
 
