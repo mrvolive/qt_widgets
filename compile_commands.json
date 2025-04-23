@@ -30,9 +30,9 @@
       "main.o",
       "main.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/main.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/main.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/main.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/main.o"
   },
   {
     "arguments": [
@@ -65,9 +65,9 @@
       "mainwindow.o",
       "mainwindow.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/mainwindow.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/mainwindow.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/mainwindow.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/mainwindow.o"
   },
   {
     "arguments": [
@@ -100,9 +100,9 @@
       "mapwidget.o",
       "view/mapwidget.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/view/mapwidget.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/mapwidget.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/view/mapwidget.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/mapwidget.o"
   },
   {
     "arguments": [
@@ -135,9 +135,9 @@
       "placemodel.o",
       "model/placemodel.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/model/placemodel.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/placemodel.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/model/placemodel.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/placemodel.o"
   },
   {
     "arguments": [
@@ -170,9 +170,9 @@
       "mapmodel.o",
       "model/mapmodel.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/model/mapmodel.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/mapmodel.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/model/mapmodel.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/mapmodel.o"
   },
   {
     "arguments": [
@@ -205,9 +205,9 @@
       "searchcontroller.o",
       "controller/searchcontroller.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/controller/searchcontroller.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/searchcontroller.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/controller/searchcontroller.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/searchcontroller.o"
   },
   {
     "arguments": [
@@ -240,9 +240,9 @@
       "mapcontroller.o",
       "controller/mapcontroller.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/controller/mapcontroller.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/mapcontroller.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/controller/mapcontroller.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/mapcontroller.o"
   },
   {
     "arguments": [
@@ -275,9 +275,9 @@
       "moc_mainwindow.o",
       "moc_mainwindow.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mainwindow.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mainwindow.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mainwindow.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mainwindow.o"
   },
   {
     "arguments": [
@@ -310,9 +310,9 @@
       "moc_mapwidget.o",
       "moc_mapwidget.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapwidget.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapwidget.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapwidget.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapwidget.o"
   },
   {
     "arguments": [
@@ -345,9 +345,9 @@
       "moc_placemodel.o",
       "moc_placemodel.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_placemodel.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_placemodel.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_placemodel.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_placemodel.o"
   },
   {
     "arguments": [
@@ -380,9 +380,9 @@
       "moc_mapmodel.o",
       "moc_mapmodel.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapmodel.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapmodel.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapmodel.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapmodel.o"
   },
   {
     "arguments": [
@@ -415,9 +415,9 @@
       "moc_searchcontroller.o",
       "moc_searchcontroller.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_searchcontroller.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_searchcontroller.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_searchcontroller.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_searchcontroller.o"
   },
   {
     "arguments": [
@@ -450,8 +450,8 @@
       "moc_mapcontroller.o",
       "moc_mapcontroller.cpp"
     ],
-    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src",
-    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapcontroller.cpp",
-    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_mapcontroller.o"
+    "directory": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but",
+    "file": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapcontroller.cpp",
+    "output": "/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_mapcontroller.o"
   }
 ]

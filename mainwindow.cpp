@@ -1,4 +1,4 @@
-// mainwindow.cpp (adapté)
+// mainwindow.cpp
 #include "mainwindow.h"
 #include "view/mapwidget.h"
 #include "model/placemodel.h"
@@ -141,8 +141,8 @@ void MainWindow::onQuitTriggered()
 
 void MainWindow::onPreferencesTriggered()
 {
-    // TODO: afficher la boîte de dialogue des préférences
-    QMessageBox::information(this, tr("Préférences"), tr("Boîte de dialogue des préférences"));
+    // TODO: afficher la boite de dialogue des préférences
+    QMessageBox::information(this, tr("Préférences"), tr("BoÃ®te de dialogue des préférences"));
 }
 
 void MainWindow::onManualTriggered()
@@ -153,10 +153,10 @@ void MainWindow::onManualTriggered()
 
 void MainWindow::onAboutTriggered()
 {
-    QMessageBox::about(this, tr("À propos de Droit_But"),
+    QMessageBox::about(this, tr("Ã propos de Droit_But"),
         tr("Droit_But v1.0\n\n"
            "Une application pour apprendre QT !\n"
-           "© 2025 - Olivier - Tous droits réservés."));
+           "Â© 2025 - Olivier - Tous droits réservés."));
 }
 
 void MainWindow::onSearchButtonClicked()

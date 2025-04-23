@@ -8,37 +8,37 @@
 
 /**
  * @class SearchController
- * @brief Contrôleur pour la recherche de lieux.
+ * @brief ContrÃ´leur pour la recherche de lieux.
  *
  * Cette classe coordonne les interactions entre l'interface utilisateur
- * et le modèle de données pour la recherche de lieux.
+ * et le modÃ¨le de donnÃ©es pour la recherche de lieux.
  */
 class SearchController : public QObject {
     Q_OBJECT
 
 private:
-    PlaceModel* _placeModel; ///< Modèle de données pour les lieux
-    MapModel* _mapModel; ///< Modèle de données pour la carte
+    PlaceModel* _placeModel; ///< ModÃ¨le de donnÃ©es pour les lieux
+    MapModel* _mapModel; ///< ModÃ¨le de donnÃ©es pour la carte
 
 public:
     /**
-     * @brief Constructeur du contrôleur de recherche.
-     * @param placeModel Modèle de données pour les lieux
-     * @param mapModel Modèle de données pour la carte
+     * @brief Constructeur du contrÃ´leur de recherche.
+     * @param placeModel ModÃ¨le de donnÃ©es pour les lieux
+     * @param mapModel ModÃ¨le de donnÃ©es pour la carte
      * @param parent Objet parent
      */
     explicit SearchController(PlaceModel* placeModel, MapModel* mapModel, QObject* parent = nullptr);
 
 public slots:
     /**
-     * @brief Recherche des lieux à partir d'un terme de recherche.
+     * @brief Recherche des lieux Ã  partir d'un terme de recherche.
      * @param searchText Texte de recherche
      */
     void search(const QString& searchText);
 
     /**
-     * @brief Sélectionne un lieu dans la liste.
-     * @param placeName Nom du lieu sélectionné
+     * @brief SÃ©lectionne un lieu dans la liste.
+     * @param placeName Nom du lieu sÃ©lectionnÃ©
      */
     void selectPlace(const QString& placeName);
 };

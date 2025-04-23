@@ -7,9 +7,9 @@
 
 /**
  * @class MapModel
- * @brief Modèle de données pour la carte.
+ * @brief ModÃ¨le de donnÃ©es pour la carte.
  *
- * Cette classe gère les données de la carte, comme le centre,
+ * Cette classe gÃ¨re les donnÃ©es de la carte, comme le centre,
  * le niveau de zoom, etc.
  */
 class MapModel : public QObject {
@@ -22,46 +22,46 @@ private:
 
 public:
     /**
-     * @brief Constructeur du modèle de carte.
+     * @brief Constructeur du modÃ¨le de carte.
      * @param parent Objet parent
      */
     explicit MapModel(QObject* parent = nullptr);
 
     /**
-     * @brief Définit le centre de la carte.
+     * @brief DÃ©finit le centre de la carte.
      * @param lon Longitude du centre
      * @param lat Latitude du centre
      */
     void setCenter(double lon, double lat);
 
     /**
-     * @brief Définit le niveau de zoom de la carte.
+     * @brief DÃ©finit le niveau de zoom de la carte.
      * @param zoom Niveau de zoom
      */
     void setZoom(int zoom);
 
     /**
-     * @brief Récupère le centre de la carte.
-     * @return Coordonnées du centre (longitude, latitude)
+     * @brief RÃ©cupÃ¨re le centre de la carte.
+     * @return CoordonnÃ©es du centre (longitude, latitude)
      */
     QPointF getCenter() const;
 
     /**
-     * @brief Récupère le niveau de zoom de la carte.
+     * @brief RÃ©cupÃ¨re le niveau de zoom de la carte.
      * @return Niveau de zoom
      */
     int getZoom() const;
 
 signals:
     /**
-     * @brief Signal émis lorsque le centre de la carte change.
+     * @brief Signal Ã©mis lorsque le centre de la carte change.
      * @param lon Longitude du centre
      * @param lat Latitude du centre
      */
     void centerChanged(double lon, double lat);
 
     /**
-     * @brief Signal émis lorsque le niveau de zoom change.
+     * @brief Signal Ã©mis lorsque le niveau de zoom change.
      * @param zoom Niveau de zoom
      */
     void zoomChanged(int zoom);

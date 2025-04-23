@@ -15,47 +15,47 @@
 
 /**
  * @class PlaceModel
- * @brief Modèle de données pour la gestion des lieux.
+ * @brief ModÃ¨le de donnÃ©es pour la gestion des lieux.
  *
- * Cette classe gère les données des lieux recherchés, y compris
- * leurs noms et coordonnées géographiques.
+ * Cette classe gÃ¨re les donnÃ©es des lieux recherchÃ©s, y compris
+ * leurs noms et coordonnÃ©es gÃ©ographiques.
  */
 class PlaceModel : public QObject {
     Q_OBJECT
 
 private:
-    QNetworkAccessManager _networkManager; ///< Pour les requêtes HTTP
-    QMap<QString, QPointF> _placeCoordinates; ///< Associe chaque lieu à ses coordonnées
+    QNetworkAccessManager _networkManager; ///< Pour les requÃªtes HTTP
+    QMap<QString, QPointF> _placeCoordinates; ///< Associe chaque lieu Ã  ses coordonnÃ©es
     QStringList _placeNames; ///< Liste des noms de lieux
 
 public:
     /**
-     * @brief Constructeur du modèle de lieux.
+     * @brief Constructeur du modÃ¨le de lieux.
      * @param parent Objet parent
      */
     explicit PlaceModel(QObject* parent = nullptr);
 
     /**
-     * @brief Recherche des lieux à partir d'un terme de recherche.
+     * @brief Recherche des lieux Ã  partir d'un terme de recherche.
      * @param searchText Texte de recherche
      */
     void searchPlaces(const QString& searchText);
 
     /**
-     * @brief Récupère les coordonnées d'un lieu.
+     * @brief RÃ©cupÃ¨re les coordonnÃ©es d'un lieu.
      * @param placeName Nom du lieu
-     * @return Coordonnées du lieu (longitude, latitude)
+     * @return CoordonnÃ©es du lieu (longitude, latitude)
      */
     QPointF getPlaceCoordinates(const QString& placeName) const;
 
     /**
-     * @brief Récupère la liste des noms de lieux.
+     * @brief RÃ©cupÃ¨re la liste des noms de lieux.
      * @return Liste des noms de lieux
      */
     QStringList getPlaceNames() const;
 
     /**
-     * @brief Vérifie si un lieu existe dans le modèle.
+     * @brief VÃ©rifie si un lieu existe dans le modÃ¨le.
      * @param placeName Nom du lieu
      * @return Vrai si le lieu existe
      */
@@ -63,20 +63,20 @@ public:
 
 private slots:
     /**
-     * @brief Traite la réponse de la recherche de lieux.
-     * @param reply Réponse du serveur
+     * @brief Traite la rÃ©ponse de la recherche de lieux.
+     * @param reply RÃ©ponse du serveur
      */
     void onSearchReply(QNetworkReply* reply);
 
 signals:
     /**
-     * @brief Signal émis lorsque la liste des lieux est mise à jour.
+     * @brief Signal Ã©mis lorsque la liste des lieux est mise Ã  jour.
      * @param placeNames Liste des noms de lieux
      */
     void placesUpdated(const QStringList& placeNames);
 
     /**
-     * @brief Signal émis en cas d'erreur lors de la recherche.
+     * @brief Signal Ã©mis en cas d'erreur lors de la recherche.
      * @param errorMessage Message d'erreur
      */
     void searchError(const QString& errorMessage);

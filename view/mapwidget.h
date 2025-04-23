@@ -1,4 +1,4 @@
-// mapwidget.h (adapté)
+// mapwidget.h (adaptÃ©)
 #ifndef MAPWIDGET_H
 #define MAPWIDGET_H
 
@@ -15,98 +15,98 @@ class QWheelEvent;
 
 /**
  * @class MapWidget
- * @brief Widget personnalisé pour l'affichage de tuiles cartographiques.
+ * @brief Widget personnalisÃ© pour l'affichage de tuiles cartographiques.
  *
- * Cette classe gère le téléchargement et l'affichage d'une carte composée de
+ * Cette classe gÃ¨re le tÃ©lÃ©chargement et l'affichage d'une carte composÃ©e de
  * tuiles cartographiques OpenStreetMap.
  */
 class MapWidget : public QWidget {
     Q_OBJECT
 
 private:
-    MapModel* _mapModel; ///< Modèle de données pour la carte
-    MapController* _mapController; ///< Contrôleur pour les interactions avec la carte
+    MapModel* _mapModel; ///< ModÃ¨le de donnÃ©es pour la carte
+    MapController* _mapController; ///< ContrÃ´leur pour les interactions avec la carte
     
-    QVector<QPixmap> _tiles; ///< Tuiles à afficher
+    QVector<QPixmap> _tiles; ///< Tuiles Ã  afficher
     QVector<QPoint> _tilePositions; ///< Positions des tuiles sur la carte
-    QNetworkAccessManager _networkManager; ///< Gestionnaire de réseau pour télécharger les tuiles
-    int _pendingRequests; ///< Nombre de requêtes en attente
-    QPoint _lastMousePos; ///< Dernière position de la souris pour le déplacement
-    bool _isDragging; ///< Indique si la carte est en train d'être déplacée
+    QNetworkAccessManager _networkManager; ///< Gestionnaire de rÃ©seau pour tÃ©lÃ©charger les tuiles
+    int _pendingRequests; ///< Nombre de requÃªtes en attente
+    QPoint _lastMousePos; ///< DerniÃ¨re position de la souris pour le dÃ©placement
+    bool _isDragging; ///< Indique si la carte est en train d'Ãªtre dÃ©placÃ©e
     QPixmap _cachedView; ///< Vue mise en cache pour le glissement rapide
-    QPoint _dragOffset; ///< Décalage actuel pendant le glissement
-    bool _needFullRefresh; ///< Indique si un fullRefresh est nécessaire
+    QPoint _dragOffset; ///< DÃ©calage actuel pendant le glissement
+    bool _needFullRefresh; ///< Indique si un fullRefresh est nÃ©cessaire
 
 public:
     /**
      * @brief Constructeur du widget d'affichage de carte.
-     * @param mapModel Modèle de données pour la carte
-     * @param mapController Contrôleur pour les interactions avec la carte
+     * @param mapModel ModÃ¨le de donnÃ©es pour la carte
+     * @param mapController ContrÃ´leur pour les interactions avec la carte
      * @param parent Widget parent
      */
     MapWidget(MapModel* mapModel, MapController* mapController, QWidget* parent = nullptr);
 
 public slots:
     /**
-     * @brief Slot appelé lorsque le centre de la carte change.
+     * @brief Slot appelÃ© lorsque le centre de la carte change.
      */
     void onCenterChanged();
 
     /**
-     * @brief Slot appelé lorsque le niveau de zoom change.
+     * @brief Slot appelÃ© lorsque le niveau de zoom change.
      */
     void onZoomChanged();
 
 private:
     /**
-     * @brief Charge les tuiles nécessaires pour afficher la carte.
+     * @brief Charge les tuiles nÃ©cessaires pour afficher la carte.
      */
     void loadTiles();
 
     /**
-     * @brief Prépare l'affichage complet de la carte.
+     * @brief PrÃ©pare l'affichage complet de la carte.
      */
     void renderFullView();
 
     /**
-     * @brief Convertit des coordonnées géographiques en coordonnées de tuile.
+     * @brief Convertit des coordonnÃ©es gÃ©ographiques en coordonnÃ©es de tuile.
      * @param lon Longitude
      * @param lat Latitude
      * @param zoom Niveau de zoom
-     * @return Coordonnées de la tuile (x, y)
+     * @return CoordonnÃ©es de la tuile (x, y)
      */
     QPoint lonLatToTile(double lon, double lat, int zoom);
 
     /**
-     * @brief Convertit des coordonnées géographiques en coordonnées de tuile (version flottante).
+     * @brief Convertit des coordonnÃ©es gÃ©ographiques en coordonnÃ©es de tuile (version flottante).
      * @param lon Longitude
      * @param lat Latitude
      * @param zoom Niveau de zoom
-     * @return Coordonnées de la tuile (x, y) en flottant
+     * @return CoordonnÃ©es de la tuile (x, y) en flottant
      */
     QPointF lonLatToTileF(double lon, double lat, int zoom);
 
     /**
-     * @brief Convertit des coordonnées de tuile en coordonnées géographiques.
-     * @param x Coordonnée X de la tuile
-     * @param y Coordonnée Y de la tuile
+     * @brief Convertit des coordonnÃ©es de tuile en coordonnÃ©es gÃ©ographiques.
+     * @param x CoordonnÃ©e X de la tuile
+     * @param y CoordonnÃ©e Y de la tuile
      * @param zoom Niveau de zoom
-     * @return Coordonnées géographiques (longitude, latitude)
+     * @return CoordonnÃ©es gÃ©ographiques (longitude, latitude)
      */
     QPair<double, double> tileToLonLat(int x, int y, int zoom);
 
     /**
-     * @brief Télécharge une tuile depuis le serveur OpenStreetMap.
-     * @param x Coordonnée X de la tuile
-     * @param y Coordonnée Y de la tuile
+     * @brief TÃ©lÃ©charge une tuile depuis le serveur OpenStreetMap.
+     * @param x CoordonnÃ©e X de la tuile
+     * @param y CoordonnÃ©e Y de la tuile
      * @param zoom Niveau de zoom
      */
     void downloadTile(int x, int y, int zoom);
 
     /**
      * @brief Construit le chemin du fichier local pour une tuile.
-     * @param x Coordonnée X de la tuile
-     * @param y Coordonnée Y de la tuile
+     * @param x CoordonnÃ©e X de la tuile
+     * @param y CoordonnÃ©e Y de la tuile
      * @param zoom Niveau de zoom
      * @return Chemin du fichier local
      */
@@ -114,45 +114,45 @@ private:
 
 protected:
     /**
-     * @brief Gère l'événement de dessin du widget.
-     * @param event Événement de dessin
+     * @brief GÃ¨re l'Ã©vÃ©nement de dessin du widget.
+     * @param event Ã‰vÃ©nement de dessin
      */
     void paintEvent(QPaintEvent* event) override;
 
     /**
-     * @brief Gère l'événement de redimensionnement du widget.
-     * @param event Événement de redimensionnement
+     * @brief GÃ¨re l'Ã©vÃ©nement de redimensionnement du widget.
+     * @param event Ã‰vÃ©nement de redimensionnement
      */
     void resizeEvent(QResizeEvent* event) override;
 
     /**
-     * @brief Gère l'événement de clic de souris pour permettre le déplacement de la carte.
-     * @param event Événement de clic de souris
+     * @brief GÃ¨re l'Ã©vÃ©nement de clic de souris pour permettre le dÃ©placement de la carte.
+     * @param event Ã‰vÃ©nement de clic de souris
      */
     void mousePressEvent(QMouseEvent* event) override;
 
     /**
-     * @brief Gère l'événement de déplacement de souris pour permettre le déplacement de la carte.
-     * @param event Événement de déplacement de souris
+     * @brief GÃ¨re l'Ã©vÃ©nement de dÃ©placement de souris pour permettre le dÃ©placement de la carte.
+     * @param event Ã‰vÃ©nement de dÃ©placement de souris
      */
     void mouseMoveEvent(QMouseEvent* event) override;
 
     /**
-     * @brief Gère l'événement de relâchement de souris pour terminer le déplacement de la carte.
-     * @param event Événement de relâchement de souris
+     * @brief GÃ¨re l'Ã©vÃ©nement de relÃ¢chement de souris pour terminer le dÃ©placement de la carte.
+     * @param event Ã‰vÃ©nement de relÃ¢chement de souris
      */
     void mouseReleaseEvent(QMouseEvent* event) override;
 
     /**
-     * @brief Gère l'événement de la molette de souris pour permettre le zoom.
-     * @param event Événement de la molette de souris
+     * @brief GÃ¨re l'Ã©vÃ©nement de la molette de souris pour permettre le zoom.
+     * @param event Ã‰vÃ©nement de la molette de souris
      */
     void wheelEvent(QWheelEvent* event) override;
 
 private slots:
     /**
-     * @brief Slot appelé lorsqu'une tuile a été téléchargée.
-     * @param reply Réponse du serveur contenant la tuile
+     * @brief Slot appelÃ© lorsqu'une tuile a Ã©tÃ© tÃ©lÃ©chargÃ©e.
+     * @param reply RÃ©ponse du serveur contenant la tuile
      */
     void onTileDownloaded(QNetworkReply* reply);
 };

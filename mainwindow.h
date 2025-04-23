@@ -1,15 +1,15 @@
-// mainwindow.h (adapté)
+// mainwindow.h (adaptÃ©)
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 /**
  * @file mainwindow.h
- * @brief Définition de la classe MainWindow qui gère la fenêtre principale de l'application.
+ * @brief DÃ©finition de la classe MainWindow qui gÃ¨re la fenÃªtre principale de l'application.
  */
 #include <QMainWindow>
 #include <QScopedPointer>
 
-// Déclarations anticipées
+// DÃ©clarations anticipÃ©es
 class QGroupBox;
 class QPushButton;
 class QLineEdit;
@@ -28,7 +28,7 @@ class MapController;
  * @class MainWindow
  * @brief Classe principale de l'interface utilisateur.
  *
- * Cette classe gère la fenêtre principale de l'application, comprenant
+ * Cette classe gÃ¨re la fenÃªtre principale de l'application, comprenant
  * les menus, les widgets et les layouts. Elle affiche une liste de villes
  * et une carte du monde.
  */
@@ -41,7 +41,7 @@ private:
     QMenu* _help_menu; ///< Menu Aide
 
     // Actions
-    QAction* _pref_action; ///< Action pour l'item de menu Préférences
+    QAction* _pref_action; ///< Action pour l'item de menu PrÃ©fÃ©rences
     QAction* _quit_action; ///< Action pour l'item de menu Quit
     QAction* _manual_action; ///< Action pour l'item de menu Manual
     QAction* _about_action; ///< Action pour l'item de menu About
@@ -49,29 +49,29 @@ private:
     // Widgets
     QScopedPointer<QGroupBox> _main_widget; ///< Widget principal contenant tout
     QScopedPointer<QPushButton> _button; ///< Bouton "Search"
-    QScopedPointer<QLineEdit> _text_edit; ///< Champ de texte éditable
+    QScopedPointer<QLineEdit> _text_edit; ///< Champ de texte Ã©ditable
     QScopedPointer<QListWidget> _list; ///< Liste des lieux
     QScopedPointer<MapWidget> _map_widget; ///< Widget affichant la carte
 
-    // Modèles et contrôleurs
-    QScopedPointer<PlaceModel> _placeModel; ///< Modèle de données pour les lieux
-    QScopedPointer<MapModel> _mapModel; ///< Modèle de données pour la carte
-    QScopedPointer<SearchController> _searchController; ///< Contrôleur pour la recherche
-    QScopedPointer<MapController> _mapController; ///< Contrôleur pour la carte
+    // ModÃ¨les et contrÃ´leurs
+    QScopedPointer<PlaceModel> _placeModel; ///< ModÃ¨le de donnÃ©es pour les lieux
+    QScopedPointer<MapModel> _mapModel; ///< ModÃ¨le de donnÃ©es pour la carte
+    QScopedPointer<SearchController> _searchController; ///< ContrÃ´leur pour la recherche
+    QScopedPointer<MapController> _mapController; ///< ContrÃ´leur pour la carte
 
 private:
     /**
-     * @brief Configure l'interface utilisateur complète.
+     * @brief Configure l'interface utilisateur complÃ¨te.
      */
     void setupUi();
 
     /**
-     * @brief Crée et configure les menus de l'application.
+     * @brief CrÃ©e et configure les menus de l'application.
      */
     void createMenus();
 
     /**
-     * @brief Crée et initialise tous les widgets de l'interface.
+     * @brief CrÃ©e et initialise tous les widgets de l'interface.
      */
     void createWidgets();
 
@@ -81,58 +81,58 @@ private:
     void setupLayouts();
 
     /**
-     * @brief Connecte les signaux aux slots appropriés.
+     * @brief Connecte les signaux aux slots appropriÃ©s.
      */
     void connectSignalsSlots();
 
 private slots:
     /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
+     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Quitter".
      */
     void onQuitTriggered();
 
     /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
+     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "PrÃ©fÃ©rences".
      */
     void onPreferencesTriggered();
 
     /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
+     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Manuel".
      */
     void onManualTriggered();
 
     /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
+     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Ã€ propos".
      */
     void onAboutTriggered();
 
     /**
-     * @brief Slot appelé lorsque l'utilisateur clique sur le bouton Search.
+     * @brief Slot appelÃ© lorsque l'utilisateur clique sur le bouton Search.
      */
     void onSearchButtonClicked();
 
     /**
-     * @brief Slot appelé lorsque la liste des lieux est mise à jour.
+     * @brief Slot appelÃ© lorsque la liste des lieux est mise Ã  jour.
      * @param placeNames Liste des noms de lieux
      */
     void onPlacesUpdated(const QStringList& placeNames);
 
     /**
-     * @brief Slot appelé lorsqu'une erreur survient lors de la recherche.
+     * @brief Slot appelÃ© lorsqu'une erreur survient lors de la recherche.
      * @param errorMessage Message d'erreur
      */
     void onSearchError(const QString& errorMessage);
 
     /**
-     * @brief Slot appelé lorsque l'utilisateur sélectionne un lieu dans la liste.
-     * @param item Élément sélectionné
+     * @brief Slot appelÃ© lorsque l'utilisateur sÃ©lectionne un lieu dans la liste.
+     * @param item Ã‰lÃ©ment sÃ©lectionnÃ©
      */
     void onListItemSelected(QListWidgetItem* item);
 
 public:
     /**
      * @brief Constructeur de la classe MainWindow.
-     * @param parent Widget parent (nullptr par défaut).
+     * @param parent Widget parent (nullptr par dÃ©faut).
      */
     MainWindow(QWidget* parent = nullptr);
 
@@ -142,4 +142,3 @@ public:
     ~MainWindow();
 };
 #endif // MAINWINDOW_H
-
