@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_POSITIONING_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I. -I. -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I. -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I. -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = droit_but1.0.0
-DISTDIR = /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/.tmp/droit_but1.0.0
+DISTDIR = /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/.tmp/droit_but1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -pipe -O2 -flto=8 -fno-fat-lto-objects -fuse-linker-plugin -fPIC
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Network.so /usr/lib/libQt5Positioning.so /usr/lib/libQt5Core.so -lGL -lpthread   
@@ -54,13 +54,29 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		mainwindow.cpp \
-		mapwidget.cpp moc_mainwindow.cpp \
-		moc_mapwidget.cpp
+		view/mapwidget.cpp \
+		model/placemodel.cpp \
+		model/mapmodel.cpp \
+		controller/searchcontroller.cpp \
+		controller/mapcontroller.cpp moc_mainwindow.cpp \
+		moc_mapwidget.cpp \
+		moc_placemodel.cpp \
+		moc_mapmodel.cpp \
+		moc_searchcontroller.cpp \
+		moc_mapcontroller.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		mapwidget.o \
+		placemodel.o \
+		mapmodel.o \
+		searchcontroller.o \
+		mapcontroller.o \
 		moc_mainwindow.o \
-		moc_mapwidget.o
+		moc_mapwidget.o \
+		moc_placemodel.o \
+		moc_mapmodel.o \
+		moc_searchcontroller.o \
+		moc_mapcontroller.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -195,7 +211,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
+		../.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -218,9 +234,17 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		droit_but.pro mainwindow.h \
-		mapwidget.h main.cpp \
+		view/mapwidget.h \
+		model/placemodel.h \
+		model/mapmodel.h \
+		controller/searchcontroller.h \
+		controller/mapcontroller.h main.cpp \
 		mainwindow.cpp \
-		mapwidget.cpp
+		view/mapwidget.cpp \
+		model/placemodel.cpp \
+		model/mapmodel.cpp \
+		controller/searchcontroller.cpp \
+		controller/mapcontroller.cpp
 QMAKE_TARGET  = droit_but
 DESTDIR       = 
 TARGET        = droit_but
@@ -229,7 +253,7 @@ TARGET        = droit_but
 first: all
 ####### Build rules
 
-droit_but: ui_mainwindow.h $(OBJECTS)  
+droit_but:  $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: droit_but.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -366,7 +390,7 @@ Makefile: droit_but.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/features/qt_config.prf \
 		/usr/lib/qt/mkspecs/linux-g++/qmake.conf \
 		/usr/lib/qt/mkspecs/features/spec_post.prf \
-		.qmake.stash \
+		../.qmake.stash \
 		/usr/lib/qt/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/qt/mkspecs/features/toolchain.prf \
 		/usr/lib/qt/mkspecs/features/default_pre.prf \
@@ -524,7 +548,7 @@ Makefile: droit_but.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/features/qt_config.prf:
 /usr/lib/qt/mkspecs/linux-g++/qmake.conf:
 /usr/lib/qt/mkspecs/features/spec_post.prf:
-.qmake.stash:
+../.qmake.stash:
 /usr/lib/qt/mkspecs/features/exclusive_builds.prf:
 /usr/lib/qt/mkspecs/features/toolchain.prf:
 /usr/lib/qt/mkspecs/features/default_pre.prf:
@@ -562,9 +586,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h mapwidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp mapwidget.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h view/mapwidget.h model/placemodel.h model/mapmodel.h controller/searchcontroller.h controller/mapcontroller.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp view/mapwidget.cpp model/placemodel.cpp model/mapmodel.cpp controller/searchcontroller.cpp controller/mapcontroller.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -574,7 +597,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -596,57 +618,93 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -flto -fno-fat-lto-objects -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_mapwidget.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mapwidget.cpp moc_placemodel.cpp moc_mapmodel.cpp moc_searchcontroller.cpp moc_mapcontroller.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_mapwidget.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mapwidget.cpp moc_placemodel.cpp moc_mapmodel.cpp moc_searchcontroller.cpp moc_mapcontroller.cpp
 moc_mainwindow.cpp: mainwindow.h \
-		mapwidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
-moc_mapwidget.cpp: mapwidget.h \
+moc_mapwidget.cpp: view/mapwidget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mapwidget.h -o moc_mapwidget.cpp
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include view/mapwidget.h -o moc_mapwidget.cpp
+
+moc_placemodel.cpp: model/placemodel.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include model/placemodel.h -o moc_placemodel.cpp
+
+moc_mapmodel.cpp: model/mapmodel.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include model/mapmodel.h -o moc_mapmodel.cpp
+
+moc_searchcontroller.cpp: controller/searchcontroller.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include controller/searchcontroller.h -o moc_searchcontroller.cpp
+
+moc_mapcontroller.cpp: controller/mapcontroller.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/src -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include controller/mapcontroller.h -o moc_mapcontroller.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all:
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
-ui_mainwindow.h: mainwindow.ui \
-		/usr/bin/uic
-	/usr/bin/uic mainwindow.ui -o ui_mainwindow.h
-
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
-main.o: main.cpp mainwindow.h \
-		mapwidget.h
+main.o: main.cpp mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-mainwindow.o: mainwindow.cpp mainwindow.h \
-		mapwidget.h
+mainwindow.o: mainwindow.cpp mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
-mapwidget.o: mapwidget.cpp mapwidget.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapwidget.o mapwidget.cpp
+mapwidget.o: view/mapwidget.cpp view/mapwidget.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapwidget.o view/mapwidget.cpp
+
+placemodel.o: model/placemodel.cpp model/placemodel.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o placemodel.o model/placemodel.cpp
+
+mapmodel.o: model/mapmodel.cpp model/mapmodel.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapmodel.o model/mapmodel.cpp
+
+searchcontroller.o: controller/searchcontroller.cpp controller/searchcontroller.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchcontroller.o controller/searchcontroller.cpp
+
+mapcontroller.o: controller/mapcontroller.cpp controller/mapcontroller.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapcontroller.o controller/mapcontroller.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_mapwidget.o: moc_mapwidget.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mapwidget.o moc_mapwidget.cpp
+
+moc_placemodel.o: moc_placemodel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_placemodel.o moc_placemodel.cpp
+
+moc_mapmodel.o: moc_mapmodel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mapmodel.o moc_mapmodel.cpp
+
+moc_searchcontroller.o: moc_searchcontroller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_searchcontroller.o moc_searchcontroller.cpp
+
+moc_mapcontroller.o: moc_mapcontroller.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mapcontroller.o moc_mapcontroller.cpp
 
 ####### Install
 

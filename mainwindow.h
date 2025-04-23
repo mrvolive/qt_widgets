@@ -1,37 +1,34 @@
+// mainwindow.h (adapté)
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 /**
  * @file mainwindow.h
- * @brief DÃ©finition de la classe MainWindow qui gÃ¨re la fenÃªtre principale de
- * l'application.
+ * @brief Définition de la classe MainWindow qui gère la fenêtre principale de l'application.
  */
-#include "mapwidget.h"
-#include "qobject.h"
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 #include <QMainWindow>
-#include <QMap>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
+#include <QScopedPointer>
 
-class QApplication;
+// Déclarations anticipées
 class QGroupBox;
-class QLabel;
+class QPushButton;
 class QLineEdit;
 class QListWidget;
 class QListWidgetItem;
-class QMenuBar;
-class QMessageBox;
-class QPushButton;
-class QVBoxLayout;
+class QMenu;
+class QAction;
+
+class MapWidget;
+class PlaceModel;
+class MapModel;
+class SearchController;
+class MapController;
 
 /**
  * @class MainWindow
  * @brief Classe principale de l'interface utilisateur.
  *
- * Cette classe gÃ¨re la fenÃªtre principale de l'application, comprenant
+ * Cette classe gère la fenêtre principale de l'application, comprenant
  * les menus, les widgets et les layouts. Elle affiche une liste de villes
  * et une carte du monde.
  */
@@ -44,7 +41,7 @@ private:
     QMenu* _help_menu; ///< Menu Aide
 
     // Actions
-    QAction* _pref_action; ///< Action pour l'item de menu PrÃ©fÃ©rences
+    QAction* _pref_action; ///< Action pour l'item de menu Préférences
     QAction* _quit_action; ///< Action pour l'item de menu Quit
     QAction* _manual_action; ///< Action pour l'item de menu Manual
     QAction* _about_action; ///< Action pour l'item de menu About
@@ -52,109 +49,97 @@ private:
     // Widgets
     QScopedPointer<QGroupBox> _main_widget; ///< Widget principal contenant tout
     QScopedPointer<QPushButton> _button; ///< Bouton "Search"
-    QScopedPointer<QLineEdit> _text_edit; ///< Champ de texte Ã©ditable
-    QScopedPointer<QListWidget> _list; ///< Liste des villes
+    QScopedPointer<QLineEdit> _text_edit; ///< Champ de texte éditable
+    QScopedPointer<QListWidget> _list; ///< Liste des lieux
     QScopedPointer<MapWidget> _map_widget; ///< Widget affichant la carte
 
-    QNetworkAccessManager _networkManager; //< Pour les requÃªtes HTTP
-    QMap<QString, QPointF> _placeCoordinates; ///< Associe chaque item de la liste Ã  ses coordonnÃ©es
+    // Modèles et contrôleurs
+    QScopedPointer<PlaceModel> _placeModel; ///< Modèle de données pour les lieux
+    QScopedPointer<MapModel> _mapModel; ///< Modèle de données pour la carte
+    QScopedPointer<SearchController> _searchController; ///< Contrôleur pour la recherche
+    QScopedPointer<MapController> _mapController; ///< Contrôleur pour la carte
 
 private:
     /**
-     * @brief Configure l'interface utilisateur complÃ¨te.
-     *
-     * Cette mÃ©thode initialise tous les composants de l'interface utilisateur
-     * en appelant les mÃ©thodes spÃ©cialisÃ©es.
+     * @brief Configure l'interface utilisateur complète.
      */
     void setupUi();
 
     /**
-     * @brief CrÃ©e et configure les menus de l'application.
-     *
-     * Initialise les menus Fichier et Aide avec leurs actions respectives.
+     * @brief Crée et configure les menus de l'application.
      */
     void createMenus();
 
     /**
-     * @brief CrÃ©e et initialise tous les widgets de l'interface.
-     *
-     * Cette mÃ©thode instancie le bouton, le champ de texte, la liste des villes
-     * et le widget de carte.
+     * @brief Crée et initialise tous les widgets de l'interface.
      */
     void createWidgets();
 
     /**
      * @brief Configure les layouts pour organiser les widgets.
-     *
-     * Met en place un layout horizontal principal avec une partie gauche
-     * (contrÃ´les) et une partie droite (carte du monde).
      */
     void setupLayouts();
 
     /**
-     * @brief Connecte les signaux aux slot appropriÃ©s.
-     *
-     * Cette mÃ©thode Ã©tablit les connexions entre les signaux Ã©mis par les widgets
-     * et les slots qui traitent ces signaux.
+     * @brief Connecte les signaux aux slots appropriés.
      */
     void connectSignalsSlots();
 
 private slots:
     /**
-     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Quitter".
-     *
-     * Ferme l'application proprement.
+     * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
      */
     void onQuitTriggered();
 
     /**
-     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "PrÃ©fÃ©rences".
-     *
-     * Affiche la boÃ®te de dialogue des prÃ©fÃ©rences.
+     * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
      */
     void onPreferencesTriggered();
 
     /**
-     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Manuel".
-     *
-     * Affiche le manuel d'utilisation.
+     * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
      */
     void onManualTriggered();
 
     /**
-     * @brief Slot appelÃ© lorsque l'utilisateur clique sur "Ã€ propos".
-     *
-     * Affiche la boÃ®te de dialogue "Ã€ propos".
+     * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
      */
     void onAboutTriggered();
 
     /**
-     * @brief Slot appelÃ© lorsque l'utilisateur clique sur le bouton Search.
-     *
-     * Si le champ de texte n'est pas vide, remplit la liste avec le texte
-     * rÃ©pÃ©tÃ© 5 fois et concatÃ©nÃ© avec un numÃ©ro de 1 Ã  5.
+     * @brief Slot appelé lorsque l'utilisateur clique sur le bouton Search.
      */
     void onSearchButtonClicked();
 
-    void onNominatimReply(QNetworkReply* reply);
+    /**
+     * @brief Slot appelé lorsque la liste des lieux est mise à jour.
+     * @param placeNames Liste des noms de lieux
+     */
+    void onPlacesUpdated(const QStringList& placeNames);
 
+    /**
+     * @brief Slot appelé lorsqu'une erreur survient lors de la recherche.
+     * @param errorMessage Message d'erreur
+     */
+    void onSearchError(const QString& errorMessage);
+
+    /**
+     * @brief Slot appelé lorsque l'utilisateur sélectionne un lieu dans la liste.
+     * @param item Élément sélectionné
+     */
     void onListItemSelected(QListWidgetItem* item);
 
 public:
     /**
      * @brief Constructeur de la classe MainWindow.
-     * @param parent Widget parent (nullptr par dÃ©faut).
-     *
-     * Initialise la fenÃªtre principale et configure l'interface utilisateur.
+     * @param parent Widget parent (nullptr par défaut).
      */
     MainWindow(QWidget* parent = nullptr);
 
     /**
      * @brief Destructeur de la classe MainWindow.
-     *
-     * LibÃ¨re les ressources allouÃ©es. La plupart des ressources sont gÃ©rÃ©es
-     * automatiquement par les QScopedPointer et le systÃ¨me de parentÃ© de Qt.
      */
     ~MainWindow();
 };
-#endif
+#endif // MAINWINDOW_H
+

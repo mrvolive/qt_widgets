@@ -1,10 +1,11 @@
-/**
- * @file mainwindow.cpp
- * @brief Implémentation de la classe MainWindow.
- */
-
+// mainwindow.cpp (adapté)
 #include "mainwindow.h"
-#include "qnamespace.h"
+#include "view/mapwidget.h"
+#include "model/placemodel.h"
+#include "model/mapmodel.h"
+#include "controller/searchcontroller.h"
+#include "controller/mapcontroller.h"
+
 #include <QApplication>
 #include <QGroupBox>
 #include <QLabel>
@@ -16,37 +17,23 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-using namespace std;
-
-/**
- * @brief Constructeur de MainWindow.
- *
- * Initialise la fenêtre principale et délègue la configuration de l'interface
- * à la méthode setupUi().
- *
- * @param parent Widget parent (nullptr par défaut).
- */
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+    // Créer les modèles
+    _placeModel.reset(new PlaceModel(this));
+    _mapModel.reset(new MapModel(this));
+    
+    // Créer les contrôleurs
+    _searchController.reset(new SearchController(_placeModel.get(), _mapModel.get(), this));
+    _mapController.reset(new MapController(_mapModel.get(), this));
+    
     setupUi();
     connectSignalsSlots();
 }
 
-/**
- * @brief Destructeur de MainWindow.
- *
- * La gestion de la mémoire est automatique grâce aux QScopedPointer
- * et au système de parenté de Qt.
- */
 MainWindow::~MainWindow() { }
 
-/**
- * @brief Configure l'interface utilisateur complète.
- *
- * Définit le titre de la fenêtre et appelle les méthodes spécialisées
- * pour créer les différentes parties de l'interface.
- */
 void MainWindow::setupUi()
 {
     setWindowTitle(QString { "Droit_But" });
@@ -56,11 +43,6 @@ void MainWindow::setupUi()
     setupLayouts();
 }
 
-/**
- * @brief Crée et configure les menus de l'application.
- *
- * Initialise les menus Fichier et Aide avec leurs actions respectives.
- */
 void MainWindow::createMenus()
 {
     // Create menus
@@ -83,12 +65,6 @@ void MainWindow::createMenus()
     _help_menu->addAction(_about_action);
 }
 
-/**
- * @brief Crée et initialise tous les widgets de l'interface.
- *
- * Cette méthode instancie le conteneur principal, le bouton, le champ de texte,
- * la liste des villes et le widget de carte.
- */
 void MainWindow::createWidgets()
 {
     // Container for window
@@ -106,20 +82,11 @@ void MainWindow::createWidgets()
     _list.reset(new QListWidget { _main_widget.get() });
     _list->addItems(places);
 
-    // Widget pour la carte
-    _map_widget.reset(new MapWidget { _main_widget.get() });
+    // Widget pour la carte (utilisant les modèles et contrôleurs)
+    _map_widget.reset(new MapWidget(_mapModel.get(), _mapController.get(), _main_widget.get()));
     _map_widget->setMinimumSize(300, 300);
 }
 
-/**
- * @brief Configure les layouts pour organiser les widgets.
- *
- * Met en place un layout horizontal principal divisé en deux parties :
- * - Partie gauche : contrôles (bouton, champ de texte, liste)
- * - Partie droite : carte du monde
- *
- * Le ratio entre les deux parties est de 1:2.
- */
 void MainWindow::setupLayouts()
 {
     // Layout principal horizontal
@@ -144,76 +111,46 @@ void MainWindow::setupLayouts()
     _main_widget->setLayout(mainLayout);
 }
 
-/**
- * @brief Connecte les signaux aux slots appropriés.
- *
- * Cette méthode établit les connexions entre les signaux émis par
- * les widgets (comme les actions de menu) et les slots qui les traitent.
- */
 void MainWindow::connectSignalsSlots()
 {
     // Connexion des actions du menu File
-    connect(_quit_action, &QAction::triggered, this,
-        &MainWindow::onQuitTriggered);
-    connect(_pref_action, &QAction::triggered, this,
-        &MainWindow::onPreferencesTriggered);
+    connect(_quit_action, &QAction::triggered, this, &MainWindow::onQuitTriggered);
+    connect(_pref_action, &QAction::triggered, this, &MainWindow::onPreferencesTriggered);
 
     // Connexion des actions du menu Help
-    connect(_manual_action, &QAction::triggered, this,
-        &MainWindow::onManualTriggered);
-    connect(_about_action, &QAction::triggered, this,
-        &MainWindow::onAboutTriggered);
+    connect(_manual_action, &QAction::triggered, this, &MainWindow::onManualTriggered);
+    connect(_about_action, &QAction::triggered, this, &MainWindow::onAboutTriggered);
 
-    // Connexion du bouton Search
-    connect(_button.get(), &QPushButton::clicked, this,
-        &MainWindow::onSearchButtonClicked);
-    connect(_text_edit.get(), &QLineEdit::returnPressed, this,
-        &MainWindow::onSearchButtonClicked);
+    // Connexion du bouton Search et du champ de texte
+    connect(_button.get(), &QPushButton::clicked, this, &MainWindow::onSearchButtonClicked);
+    connect(_text_edit.get(), &QLineEdit::returnPressed, this, &MainWindow::onSearchButtonClicked);
 
     // Connexion de la liste
-    connect(_list.get(), &QListWidget::itemClicked, this,
-        &MainWindow::onListItemSelected);
+    connect(_list.get(), &QListWidget::itemClicked, this, &MainWindow::onListItemSelected);
+
+    // Connexion du modèle de lieux
+    connect(_placeModel.get(), &PlaceModel::placesUpdated, this, &MainWindow::onPlacesUpdated);
+    connect(_placeModel.get(), &PlaceModel::searchError, this, &MainWindow::onSearchError);
 }
 
-/**
- * @brief Slot appelé lorsque l'utilisateur clique sur "Quitter".
- *
- * Ferme l'application proprement.
- */
 void MainWindow::onQuitTriggered()
 {
     // Ferme l'application
     QApplication::quit();
 }
 
-/**
- * @brief Slot appelé lorsque l'utilisateur clique sur "Préférences".
- *
- * Affiche la boîte de dialogue des préférences.
- */
 void MainWindow::onPreferencesTriggered()
 {
     // TODO: afficher la boîte de dialogue des préférences
-    QMessageBox::information(this, tr("Préférences"),
-        tr("Boîte de dialogue des préférences"));
+    QMessageBox::information(this, tr("Préférences"), tr("Boîte de dialogue des préférences"));
 }
 
-/**
- * @brief Slot appelé lorsque l'utilisateur clique sur "Manuel".
- *
- * Affiche le manuel d'utilisation.
- */
 void MainWindow::onManualTriggered()
 {
     // TODO: afficher le manuel d'utilisation
     QMessageBox::information(this, tr("Manuel"), tr("Manuel d'utilisation"));
 }
 
-/**
- * @brief Slot appelé lorsque l'utilisateur clique sur "À propos".
- *
- * Affiche la boîte de dialogue "À propos".
- */
 void MainWindow::onAboutTriggered()
 {
     QMessageBox::about(this, tr("À propos de Droit_But"),
@@ -222,80 +159,31 @@ void MainWindow::onAboutTriggered()
            "© 2025 - Olivier - Tous droits réservés."));
 }
 
-/**
- * @brief Slot appelé lorsque l'utilisateur clique sur le bouton Search.
- *
- * Si le champ de texte n'est pas vide, remplit la liste avec le texte
- * répété 5 fois et concaténé avec un numéro de 1 à 5.
- */
 void MainWindow::onSearchButtonClicked()
 {
     QString text = _text_edit->text().trimmed();
     if (text.isEmpty())
         return;
 
-    // Nettoyer la liste et la map
-    _list->clear();
-    _placeCoordinates.clear();
-
-    // Construire l'URL de recherche
-    QString encoded = QString::fromUtf8(QUrl::toPercentEncoding(text));
-    QString url = QString("https://nominatim.openstreetmap.org/search?format=json&q=%1")
-                      .arg(encoded);
-
-    QNetworkRequest request((QUrl(url)));
-    // IMPORTANT : ajouter un User-Agent, sinon OSM peut refuser la requête
-    request.setHeader(QNetworkRequest::UserAgentHeader,
-        "Qt Nominatim Example/1.0");
-
-    // Envoyer la requête
-    QNetworkReply* reply = _networkManager.get(request);
-
-    // Connecter la réponse à un slot
-    connect(reply, &QNetworkReply::finished, this,
-        [this, reply]() { this->onNominatimReply(reply); });
+    // Utiliser le contrôleur pour effectuer la recherche
+    _searchController->search(text);
 }
 
-void MainWindow::onNominatimReply(QNetworkReply* reply)
+void MainWindow::onPlacesUpdated(const QStringList& placeNames)
 {
-    if (reply->error() != QNetworkReply::NoError) {
-        QMessageBox::warning(this, tr("Erreur réseau"), reply->errorString());
-        reply->deleteLater();
-        return;
-    }
+    // Mettre à jour la liste avec les nouveaux lieux
+    _list->clear();
+    _list->addItems(placeNames);
+}
 
-    QByteArray data = reply->readAll();
-    reply->deleteLater();
-
-    QJsonParseError error;
-    QJsonDocument doc = QJsonDocument::fromJson(data, &error);
-    if (error.error != QJsonParseError::NoError) {
-        QMessageBox::warning(this, tr("Erreur JSON"), error.errorString());
-        return;
-    }
-
-    QJsonArray results = doc.array();
-    for (const QJsonValue& value : results) {
-        QJsonObject obj = value.toObject();
-        QString displayName = obj.value("display_name").toString();
-        double lat = obj.value("lat").toString().toDouble();
-        double lon = obj.value("lon").toString().toDouble();
-
-        // Ajouter à la liste
-        _list->addItem(displayName);
-        // Sauvegarder les coordonnées associées
-        _placeCoordinates[displayName] = QPointF(lon, lat);
-    }
+void MainWindow::onSearchError(const QString& errorMessage)
+{
+    QMessageBox::warning(this, tr("Erreur de recherche"), errorMessage);
 }
 
 void MainWindow::onListItemSelected(QListWidgetItem* item)
 {
-    QString displayName = item->text();
-    if (_placeCoordinates.contains(displayName)) {
-        QPointF coords = _placeCoordinates[displayName];
-        double lon = coords.x();
-        double lat = coords.y();
-        // Par exemple, centrer la carte :
-        _map_widget->setCenter(lon, lat);
-    }
+    // Utiliser le contrôleur pour sélectionner le lieu
+    _searchController->selectPlace(item->text());
 }
+

@@ -10,17 +10,23 @@ CONFIG += c++20
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp\
-    mapwidget.cpp
+    mainwindow.cpp \
+    view/mapwidget.cpp \
+    model/placemodel.cpp \
+    model/mapmodel.cpp \
+    controller/searchcontroller.cpp \
+    controller/mapcontroller.cpp
 
 HEADERS += \
-    mainwindow.h\
-    mapwidget.h
-
-FORMS += \
-    mainwindow.ui
+    mainwindow.h \
+    view/mapwidget.h \
+    model/placemodel.h \
+    model/mapmodel.h \
+    controller/searchcontroller.h \
+    controller/mapcontroller.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+

@@ -1,3 +1,4 @@
+// mapwidget.cpp
 #include "mapwidget.h"
 
 #include <QDir>
@@ -17,25 +18,14 @@
 #include <QWheelEvent>
 #include <cmath>
 
-/**
- * @brief Constructeur de MapWidget.
- *
- * Initialise le widget avec un zoom par défaut de 10 et le centre sur
- * les coordonnées spécifiées.
- *
- * @param parent Widget parent
- */
-MapWidget::MapWidget(QWidget* parent)
+MapWidget::MapWidget(MapModel* mapModel, MapController* mapController, QWidget* parent)
     : QWidget(parent)
-    , _zoom(10)
+    , _mapModel(mapModel)
+    , _mapController(mapController)
     , _pendingRequests(0)
     , _isDragging(false)
     , _needFullRefresh(true)
 {
-    // Définir le centre sur les coordonnées spécifiées (Belfort, France)
-    _centerLon = 6.839349;
-    _centerLat = 47.64263;
-
     // Créer le répertoire de cache pour les tuiles
     QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/osm_tiles";
     QDir().mkpath(cacheDir);
@@ -44,45 +34,29 @@ MapWidget::MapWidget(QWidget* parent)
     connect(&_networkManager, &QNetworkAccessManager::finished, this,
         &MapWidget::onTileDownloaded);
 
+    // Connecter les signaux du modèle aux slots de la vue
+    connect(_mapModel, &MapModel::centerChanged, this, &MapWidget::onCenterChanged);
+    connect(_mapModel, &MapModel::zoomChanged, this, &MapWidget::onZoomChanged);
+
     loadTiles();
     setMouseTracking(true);
     setFocusPolicy(Qt::StrongFocus);
 }
 
-/**
- * @brief Définit le centre de la carte.
- *
- * @param lon Longitude du centre
- * @param lat Latitude du centre
- */
-void MapWidget::setCenter(double lon, double lat)
+void MapWidget::onCenterChanged()
 {
-    _centerLon = lon;
-    _centerLat = lat;
-
     _needFullRefresh = true;
     loadTiles();
     update();
 }
 
-void MapWidget::setZoom(int zoom)
+void MapWidget::onZoomChanged()
 {
-    // Limiter le zoom entre 5 et 15
-    _zoom = qBound(5, zoom, 15);
-
     _needFullRefresh = true;
     loadTiles();
     update();
 }
 
-/**
- * @brief Convertit des coordonnées géographiques en coordonnées de tuile.
- *
- * @param lon Longitude
- * @param lat Latitude
- * @param zoom Niveau de zoom
- * @return Coordonnées de la tuile (x, y)
- */
 QPoint MapWidget::lonLatToTile(double lon, double lat, int zoom)
 {
     int n = 1 << zoom; // 2^zoom
@@ -101,14 +75,6 @@ QPointF MapWidget::lonLatToTileF(double lon, double lat, int zoom)
     return QPointF(x, y);
 }
 
-/**
- * @brief Convertit des coordonnées de tuile en coordonnées géographiques.
- *
- * @param x Coordonnée X de la tuile
- * @param y Coordonnée Y de la tuile
- * @param zoom Niveau de zoom
- * @return Coordonnées géographiques (longitude, latitude)
- */
 QPair<double, double> MapWidget::tileToLonLat(int x, int y, int zoom)
 {
     int n = 1 << zoom;
@@ -118,27 +84,12 @@ QPair<double, double> MapWidget::tileToLonLat(int x, int y, int zoom)
     return qMakePair(lon, lat);
 }
 
-/**
- * @brief Construit le chemin du fichier local pour une tuile.
- *
- * @param x Coordonnée X de la tuile
- * @param y Coordonnée Y de la tuile
- * @param zoom Niveau de zoom
- * @return Chemin du fichier local
- */
 QString MapWidget::tileFilePath(int x, int y, int zoom)
 {
     QString cacheDir = QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + "/osm_tiles";
     return QString("%1/%2-%3-%4.png").arg(cacheDir).arg(zoom).arg(x).arg(y);
 }
 
-/**
- * @brief Télécharge une tuile depuis le serveur OpenStreetMap.
- *
- * @param x Coordonnée X de la tuile
- * @param y Coordonnée Y de la tuile
- * @param zoom Niveau de zoom
- */
 void MapWidget::downloadTile(int x, int y, int zoom)
 {
     // Vérifier si le fichier existe déjà
@@ -167,8 +118,7 @@ void MapWidget::downloadTile(int x, int y, int zoom)
     // Créer la requête
     QNetworkRequest request(url);
 
-    // Ajouter un User-Agent pour respecter les conditions d'utilisation
-    // d'OpenStreetMap
+    // Ajouter un User-Agent pour respecter les conditions d'utilisation d'OpenStreetMap
     request.setHeader(QNetworkRequest::UserAgentHeader, "Qt OSM Map Widget/1.0");
 
     // Envoyer la requête
@@ -176,11 +126,6 @@ void MapWidget::downloadTile(int x, int y, int zoom)
     _pendingRequests++;
 }
 
-/**
- * @brief Slot appelé lorsqu'une tuile a été téléchargée.
- *
- * @param reply Réponse du serveur contenant la tuile
- */
 void MapWidget::onTileDownloaded(QNetworkReply* reply)
 {
     // Diminuer le compteur de requêtes en attente
@@ -226,20 +171,18 @@ void MapWidget::onTileDownloaded(QNetworkReply* reply)
     reply->deleteLater();
 }
 
-/**
- * @brief Charge les tuiles nécessaires pour afficher la carte.
- *
- * Cette méthode calcule quelles tuiles sont nécessaires pour afficher
- * la région autour du centre à un niveau de zoom donné.
- */
 void MapWidget::loadTiles()
 {
     // Vider les tuiles précédentes
     _tiles.clear();
     _tilePositions.clear();
 
+    // Obtenir les données du modèle
+    QPointF center = _mapModel->getCenter();
+    int zoom = _mapModel->getZoom();
+
     // Calculer la tuile centrale avec des coordonnées fractionnaires
-    QPointF centralTileF = lonLatToTileF(_centerLon, _centerLat, _zoom);
+    QPointF centralTileF = lonLatToTileF(center.x(), center.y(), zoom);
 
     // Obtenir la partie entière de la position centrale
     int centralTileX = floor(centralTileF.x());
@@ -266,7 +209,7 @@ void MapWidget::loadTiles()
     int endY = startY + tilesY;
 
     // Limiter aux tuiles valides pour ce niveau de zoom
-    int maxTile = (1 << _zoom) - 1;
+    int maxTile = (1 << zoom) - 1;
     startX = qBound(0, startX, maxTile);
     startY = qBound(0, startY, maxTile);
     endX = qBound(0, endX, maxTile);
@@ -275,10 +218,11 @@ void MapWidget::loadTiles()
     // Télécharger ou charger les tuiles
     for (int y = startY; y <= endY; y++) {
         for (int x = startX; x <= endX; x++) {
-            downloadTile(x, y, _zoom);
+            downloadTile(x, y, zoom);
         }
     }
 }
+
 void MapWidget::renderFullView()
 {
     // Créer une image plus grande que la taille du widget
@@ -291,8 +235,12 @@ void MapWidget::renderFullView()
     QPainter painter(&_cachedView);
     painter.setRenderHint(QPainter::SmoothPixmapTransform, true);
 
+    // Obtenir les données du modèle
+    QPointF center = _mapModel->getCenter();
+    int zoom = _mapModel->getZoom();
+
     // Calculer la tuile centrale avec des coordonnées fractionnaires
-    QPointF centralTileF = lonLatToTileF(_centerLon, _centerLat, _zoom);
+    QPointF centralTileF = lonLatToTileF(center.x(), center.y(), zoom);
 
     // Taille standard d'une tuile
     const int tileSize = 256;
@@ -301,12 +249,6 @@ void MapWidget::renderFullView()
     // Centrer sur l'image élargie
     int centerX = cacheSize.width() / 2;
     int centerY = cacheSize.height() / 2;
-
-    // Calculer le décalage fractionnaire (en pixels) à l'intérieur de la tuile centrale
-    double fracX = centralTileF.x() - floor(centralTileF.x());
-    double fracY = centralTileF.y() - floor(centralTileF.y());
-    int pixelOffsetX = fracX * tileSize;
-    int pixelOffsetY = fracY * tileSize;
 
     // Dessiner toutes les tuiles
     for (int i = 0; i < _tiles.size(); i++) {
@@ -323,13 +265,10 @@ void MapWidget::renderFullView()
     _needFullRefresh = false;
 }
 
-/**
- * @brief Gère l'événement de dessin du widget.
- *
- * @param event Événement de dessin
- */
 void MapWidget::paintEvent(QPaintEvent* event)
 {
+    Q_UNUSED(event);
+
     QPainter painter(this);
 
     if (_needFullRefresh) {
@@ -356,11 +295,6 @@ void MapWidget::paintEvent(QPaintEvent* event)
     }
 }
 
-/**
- * @brief Gère l'événement de redimensionnement du widget.
- *
- * @param event Événement de redimensionnement
- */
 void MapWidget::resizeEvent(QResizeEvent* event)
 {
     QWidget::resizeEvent(event);
@@ -369,12 +303,6 @@ void MapWidget::resizeEvent(QResizeEvent* event)
     loadTiles();
 }
 
-/**
- * @brief Gère l'événement de clic de souris pour permettre le déplacement de la
- * carte.
- *
- * @param event Événement de clic de souris
- */
 void MapWidget::mousePressEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton) {
@@ -391,12 +319,6 @@ void MapWidget::mousePressEvent(QMouseEvent* event)
     }
 }
 
-/**
- * @brief Gère l'événement de déplacement de souris pour permettre le
- * déplacement de la carte.
- *
- * @param event Événement de déplacement de souris
- */
 void MapWidget::mouseMoveEvent(QMouseEvent* event)
 {
     if (_isDragging) {
@@ -414,62 +336,22 @@ void MapWidget::mouseMoveEvent(QMouseEvent* event)
     }
 }
 
-/**
- * @brief Gère l'événement de relâchement de souris pour terminer le déplacement
- * de la carte.
- *
- * @param event Événement de relâchement de souris
- */
 void MapWidget::mouseReleaseEvent(QMouseEvent* event)
 {
     if (event->button() == Qt::LeftButton && _isDragging) {
         _isDragging = false;
         setCursor(Qt::ArrowCursor);
 
-        // Calcul précis pour la conversion pixels -> degrés
-        int n = 1 << _zoom;
-        double worldSize = 256.0 * n;
-
-        // Pour la longitude, c'est une relation linéaire
-        double deltaLon = 360.0 * _dragOffset.x() / worldSize;
-
-        // Pour la latitude, c'est plus complexe à cause de la projection Mercator
-        double latRad = _centerLat * M_PI / 180.0;
-        double factor = 1.0 / cos(latRad); // Facteur de correction pour la latitude
-        double deltaLat = -360.0 * _dragOffset.y() / (worldSize * factor);
-
-        _centerLon += deltaLon;
-        _centerLat += deltaLat;
-
-        // Limiter la longitude à [-180, 180] et la latitude à [-85, 85]
-        _centerLon = qBound(-180.0, _centerLon, 180.0);
-        _centerLat = qBound(-85.0, _centerLat, 85.0);
+        // Utiliser le contrôleur pour mettre à jour le modèle
+        _mapController->panMap(_dragOffset.x(), _dragOffset.y(), _mapModel->getZoom());
 
         // Réinitialiser le décalage
         _dragOffset = QPoint(0, 0);
-
-        _needFullRefresh = true;
-        loadTiles();
-        update();
     }
 }
 
-/**
- * @brief Gère l'événement de la molette de souris pour permettre le zoom.
- *
- * @param event Événement de la molette de souris
- */
 void MapWidget::wheelEvent(QWheelEvent* event)
 {
-    // Déterminer la direction du zoom
-    int delta = event->angleDelta().y();
-
-    // Changer le niveau de zoom
-    if (delta > 0) {
-        // Zoom in
-        setZoom(_zoom + 1);
-    } else if (delta < 0) {
-        // Zoom out
-        setZoom(_zoom - 1);
-    }
+    // Utiliser le contrôleur pour gérer le zoom
+    _mapController->zoomMap(event->angleDelta().y());
 }
