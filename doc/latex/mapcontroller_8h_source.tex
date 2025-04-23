@@ -1,0 +1,35 @@
+\doxysection{mapcontroller.\+h}
+\hypertarget{mapcontroller_8h_source}{}\label{mapcontroller_8h_source}\index{controller/mapcontroller.h@{controller/mapcontroller.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ mapcontroller.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ MAPCONTROLLER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ MAPCONTROLLER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}model/mapmodel.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPoint>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMapController_af11d867a3afacdb944a14cadde6afd2f}{MapController}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classMapModel}{MapModel}}*\ \mbox{\hyperlink{classMapController_a9e3ea74cea70c5ef49c77cdef0331017}{\_mapModel}};\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classMapController_af11d867a3afacdb944a14cadde6afd2f}{MapController}}(\mbox{\hyperlink{classMapModel}{MapModel}}*\ mapModel,\ QObject*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapController_ae899501bf2e060c02aa3a210c5754c6e}{setCenter}}(\textcolor{keywordtype}{double}\ lon,\ \textcolor{keywordtype}{double}\ lat);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapController_abaf8f0d2097732e7c608b1b56950a9de}{setZoom}}(\textcolor{keywordtype}{int}\ zoom);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapController_a48332d1a50f4f75923c58887f07f1b89}{panMap}}(\textcolor{keywordtype}{int}\ deltaX,\ \textcolor{keywordtype}{int}\ deltaY,\ \textcolor{keywordtype}{int}\ zoom);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapController_a8f16b6c96bf2519bc34c055dec686295}{zoomMap}}(\textcolor{keywordtype}{int}\ delta);}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAPCONTROLLER\_H}}
+\DoxyCodeLine{00060\ }
+
+\end{DoxyCode}

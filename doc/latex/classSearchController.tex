@@ -1,0 +1,104 @@
+\doxysection{Search\+Controller Class Reference}
+\hypertarget{classSearchController}{}\label{classSearchController}\index{SearchController@{SearchController}}
+
+
+Contrôleur pour la recherche de lieux.  
+
+
+
+
+{\ttfamily \#include $<$searchcontroller.\+h$>$}
+
+Inheritance diagram for Search\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSearchController}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classSearchController_ad92f9d909541eb5efa2928d42bdbc138}{search}} (const QString \&search\+Text)
+\begin{DoxyCompactList}\small\item\em Recherche des lieux à partir d\textquotesingle{}un terme de recherche. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classSearchController_ae216e781eb4b8e525ccd99086e0d4491}{select\+Place}} (const QString \&place\+Name)
+\begin{DoxyCompactList}\small\item\em Sélectionne un lieu dans la liste. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSearchController_a87495977666a1b5f5bb32390a96baa7b}{Search\+Controller}} (\mbox{\hyperlink{classPlaceModel}{Place\+Model}} \texorpdfstring{$\ast$}{*}place\+Model, \mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}map\+Model, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur du contrôleur de recherche. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSearchController_a430e8d8ccfa0b655f0189afa185c1978}\label{classSearchController_a430e8d8ccfa0b655f0189afa185c1978} 
+\mbox{\hyperlink{classPlaceModel}{Place\+Model}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+place\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour les lieux. \end{DoxyCompactList}\item 
+\Hypertarget{classSearchController_a752efa1c935c48ab84b3cac9630f080b}\label{classSearchController_a752efa1c935c48ab84b3cac9630f080b} 
+\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+map\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contrôleur pour la recherche de lieux. 
+
+Cette classe coordonne les interactions entre l\textquotesingle{}interface utilisateur et le modèle de données pour la recherche de lieux. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classSearchController_a87495977666a1b5f5bb32390a96baa7b}\index{SearchController@{SearchController}!SearchController@{SearchController}}
+\index{SearchController@{SearchController}!SearchController@{SearchController}}
+\doxysubsubsection{\texorpdfstring{SearchController()}{SearchController()}}
+{\footnotesize\ttfamily \label{classSearchController_a87495977666a1b5f5bb32390a96baa7b} 
+Search\+Controller\+::\+Search\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlaceModel}{Place\+Model}} \texorpdfstring{$\ast$}{*}}]{place\+Model}{, }\item[{\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}}]{map\+Model}{, }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur du contrôleur de recherche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Model} & Modèle de données pour les lieux \\
+\hline
+{\em map\+Model} & Modèle de données pour la carte \\
+\hline
+{\em parent} & Objet parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classSearchController_ad92f9d909541eb5efa2928d42bdbc138}\index{SearchController@{SearchController}!search@{search}}
+\index{search@{search}!SearchController@{SearchController}}
+\doxysubsubsection{\texorpdfstring{search}{search}}
+{\footnotesize\ttfamily \label{classSearchController_ad92f9d909541eb5efa2928d42bdbc138} 
+void Search\+Controller\+::search (\begin{DoxyParamCaption}\item[{const QString \&}]{search\+Text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Recherche des lieux à partir d\textquotesingle{}un terme de recherche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Text} & Texte de recherche \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classSearchController_ae216e781eb4b8e525ccd99086e0d4491}\index{SearchController@{SearchController}!selectPlace@{selectPlace}}
+\index{selectPlace@{selectPlace}!SearchController@{SearchController}}
+\doxysubsubsection{\texorpdfstring{selectPlace}{selectPlace}}
+{\footnotesize\ttfamily \label{classSearchController_ae216e781eb4b8e525ccd99086e0d4491} 
+void Search\+Controller\+::select\+Place (\begin{DoxyParamCaption}\item[{const QString \&}]{place\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Sélectionne un lieu dans la liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Name} & Nom du lieu sélectionné \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller/searchcontroller.\+h\item 
+controller/searchcontroller.\+cpp\end{DoxyCompactItemize}

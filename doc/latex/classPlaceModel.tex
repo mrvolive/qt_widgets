@@ -1,0 +1,195 @@
+\doxysection{Place\+Model Class Reference}
+\hypertarget{classPlaceModel}{}\label{classPlaceModel}\index{PlaceModel@{PlaceModel}}
+
+
+Modèle de données pour la gestion des lieux.  
+
+
+
+
+{\ttfamily \#include $<$placemodel.\+h$>$}
+
+Inheritance diagram for Place\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classPlaceModel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPlaceModel_a3d9d6e016cffc0a9fffba552f25e2cf1}{places\+Updated}} (const QString\+List \&place\+Names)
+\begin{DoxyCompactList}\small\item\em Signal émis lorsque la liste des lieux est mise à jour. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlaceModel_a25483f508690c9cd72b23552a200d222}{search\+Error}} (const QString \&error\+Message)
+\begin{DoxyCompactList}\small\item\em Signal émis en cas d\textquotesingle{}erreur lors de la recherche. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPlaceModel_aa731821cbf2eafa014658c5715a56605}{Place\+Model}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur du modèle de lieux. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classPlaceModel_a167d63a869ab587e5ac5029c34e16a67}{search\+Places}} (const QString \&search\+Text)
+\begin{DoxyCompactList}\small\item\em Recherche des lieux à partir d\textquotesingle{}un terme de recherche. \end{DoxyCompactList}\item 
+QPointF \mbox{\hyperlink{classPlaceModel_a7cc370286485da21f6d954f9f8527e5b}{get\+Place\+Coordinates}} (const QString \&place\+Name) const
+\begin{DoxyCompactList}\small\item\em Récupère les coordonnées d\textquotesingle{}un lieu. \end{DoxyCompactList}\item 
+QString\+List \mbox{\hyperlink{classPlaceModel_af44d6293b06d75ef0644b0ed301ec1f9}{get\+Place\+Names}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la liste des noms de lieux. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classPlaceModel_a843b566d8df4eba5ecd44e1b2ceb2099}{has\+Place}} (const QString \&place\+Name) const
+\begin{DoxyCompactList}\small\item\em Vérifie si un lieu existe dans le modèle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPlaceModel_a923389e69dc867ac114e739887026006}{on\+Search\+Reply}} (QNetwork\+Reply \texorpdfstring{$\ast$}{*}reply)
+\begin{DoxyCompactList}\small\item\em Traite la réponse de la recherche de lieux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classPlaceModel_a9c17780d398658d759a9612647bb7495}\label{classPlaceModel_a9c17780d398658d759a9612647bb7495} 
+QNetwork\+Access\+Manager {\bfseries \+\_\+network\+Manager}
+\begin{DoxyCompactList}\small\item\em Pour les requêtes HTTP. \end{DoxyCompactList}\item 
+\Hypertarget{classPlaceModel_ab4482e675a7361cece4694178af370b1}\label{classPlaceModel_ab4482e675a7361cece4694178af370b1} 
+QMap$<$ QString, QPointF $>$ {\bfseries \+\_\+place\+Coordinates}
+\begin{DoxyCompactList}\small\item\em Associe chaque lieu à ses coordonnées. \end{DoxyCompactList}\item 
+\Hypertarget{classPlaceModel_a973a76b68d96acbe4bdbddaf6044520a}\label{classPlaceModel_a973a76b68d96acbe4bdbddaf6044520a} 
+QString\+List {\bfseries \+\_\+place\+Names}
+\begin{DoxyCompactList}\small\item\em Liste des noms de lieux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modèle de données pour la gestion des lieux. 
+
+Cette classe gère les données des lieux recherchés, y compris leurs noms et coordonnées géographiques. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classPlaceModel_aa731821cbf2eafa014658c5715a56605}\index{PlaceModel@{PlaceModel}!PlaceModel@{PlaceModel}}
+\index{PlaceModel@{PlaceModel}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{PlaceModel()}{PlaceModel()}}
+{\footnotesize\ttfamily \label{classPlaceModel_aa731821cbf2eafa014658c5715a56605} 
+Place\+Model\+::\+Place\+Model (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur du modèle de lieux. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Objet parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classPlaceModel_a7cc370286485da21f6d954f9f8527e5b}\index{PlaceModel@{PlaceModel}!getPlaceCoordinates@{getPlaceCoordinates}}
+\index{getPlaceCoordinates@{getPlaceCoordinates}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{getPlaceCoordinates()}{getPlaceCoordinates()}}
+{\footnotesize\ttfamily \label{classPlaceModel_a7cc370286485da21f6d954f9f8527e5b} 
+QPointF Place\+Model\+::get\+Place\+Coordinates (\begin{DoxyParamCaption}\item[{const QString \&}]{place\+Name}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère les coordonnées d\textquotesingle{}un lieu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Name} & Nom du lieu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordonnées du lieu (longitude, latitude) 
+\end{DoxyReturn}
+\Hypertarget{classPlaceModel_af44d6293b06d75ef0644b0ed301ec1f9}\index{PlaceModel@{PlaceModel}!getPlaceNames@{getPlaceNames}}
+\index{getPlaceNames@{getPlaceNames}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{getPlaceNames()}{getPlaceNames()}}
+{\footnotesize\ttfamily \label{classPlaceModel_af44d6293b06d75ef0644b0ed301ec1f9} 
+QString\+List Place\+Model\+::get\+Place\+Names (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la liste des noms de lieux. 
+
+\begin{DoxyReturn}{Returns}
+Liste des noms de lieux 
+\end{DoxyReturn}
+\Hypertarget{classPlaceModel_a843b566d8df4eba5ecd44e1b2ceb2099}\index{PlaceModel@{PlaceModel}!hasPlace@{hasPlace}}
+\index{hasPlace@{hasPlace}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{hasPlace()}{hasPlace()}}
+{\footnotesize\ttfamily \label{classPlaceModel_a843b566d8df4eba5ecd44e1b2ceb2099} 
+bool Place\+Model\+::has\+Place (\begin{DoxyParamCaption}\item[{const QString \&}]{place\+Name}{}\end{DoxyParamCaption}) const}
+
+
+
+Vérifie si un lieu existe dans le modèle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Name} & Nom du lieu \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vrai si le lieu existe 
+\end{DoxyReturn}
+\Hypertarget{classPlaceModel_a923389e69dc867ac114e739887026006}\index{PlaceModel@{PlaceModel}!onSearchReply@{onSearchReply}}
+\index{onSearchReply@{onSearchReply}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{onSearchReply}{onSearchReply}}
+{\footnotesize\ttfamily \label{classPlaceModel_a923389e69dc867ac114e739887026006} 
+void Place\+Model\+::on\+Search\+Reply (\begin{DoxyParamCaption}\item[{QNetwork\+Reply \texorpdfstring{$\ast$}{*}}]{reply}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Traite la réponse de la recherche de lieux. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reply} & Réponse du serveur \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPlaceModel_a3d9d6e016cffc0a9fffba552f25e2cf1}\index{PlaceModel@{PlaceModel}!placesUpdated@{placesUpdated}}
+\index{placesUpdated@{placesUpdated}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{placesUpdated}{placesUpdated}}
+{\footnotesize\ttfamily \label{classPlaceModel_a3d9d6e016cffc0a9fffba552f25e2cf1} 
+void Place\+Model\+::places\+Updated (\begin{DoxyParamCaption}\item[{const QString\+List \&}]{place\+Names}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal émis lorsque la liste des lieux est mise à jour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Names} & Liste des noms de lieux \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPlaceModel_a25483f508690c9cd72b23552a200d222}\index{PlaceModel@{PlaceModel}!searchError@{searchError}}
+\index{searchError@{searchError}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{searchError}{searchError}}
+{\footnotesize\ttfamily \label{classPlaceModel_a25483f508690c9cd72b23552a200d222} 
+void Place\+Model\+::search\+Error (\begin{DoxyParamCaption}\item[{const QString \&}]{error\+Message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal émis en cas d\textquotesingle{}erreur lors de la recherche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+Message} & Message d\textquotesingle{}erreur \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classPlaceModel_a167d63a869ab587e5ac5029c34e16a67}\index{PlaceModel@{PlaceModel}!searchPlaces@{searchPlaces}}
+\index{searchPlaces@{searchPlaces}!PlaceModel@{PlaceModel}}
+\doxysubsubsection{\texorpdfstring{searchPlaces()}{searchPlaces()}}
+{\footnotesize\ttfamily \label{classPlaceModel_a167d63a869ab587e5ac5029c34e16a67} 
+void Place\+Model\+::search\+Places (\begin{DoxyParamCaption}\item[{const QString \&}]{search\+Text}{}\end{DoxyParamCaption})}
+
+
+
+Recherche des lieux à partir d\textquotesingle{}un terme de recherche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em search\+Text} & Texte de recherche \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/placemodel.\+h\item 
+model/placemodel.\+cpp\end{DoxyCompactItemize}

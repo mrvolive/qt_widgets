@@ -1,0 +1,413 @@
+\doxysection{Map\+Widget Class Reference}
+\hypertarget{classMapWidget}{}\label{classMapWidget}\index{MapWidget@{MapWidget}}
+
+
+Widget personnalisé pour l\textquotesingle{}affichage de tuiles cartographiques.  
+
+
+
+
+{\ttfamily \#include $<$mapwidget.\+h$>$}
+
+Inheritance diagram for Map\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMapWidget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMapWidget_a22451ae5484c3c84677f90233ea4ca23}\label{classMapWidget_a22451ae5484c3c84677f90233ea4ca23} 
+void {\bfseries on\+Center\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque le centre de la carte change. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_aeecb82854e587c20ea7b3de9ab8f056c}\label{classMapWidget_aeecb82854e587c20ea7b3de9ab8f056c} 
+void {\bfseries on\+Zoom\+Changed} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque le niveau de zoom change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapWidget_a04ac8a5a0da413ec8973c37061125b0d}{mouse\+Position\+Changed}} (double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Signal émis lorsque la position de la souris change sur la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMapWidget_aa214385067e88a12f9a3e57e10b44c21}{Map\+Widget}} (\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}map\+Model, \mbox{\hyperlink{classMapController}{Map\+Controller}} \texorpdfstring{$\ast$}{*}map\+Controller, QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur du widget d\textquotesingle{}affichage de carte. \end{DoxyCompactList}\item 
+QPair$<$ double, double $>$ \mbox{\hyperlink{classMapWidget_aee458161ad1a9d70b216e3ab4fa1b69b}{screen\+To\+Lon\+Lat}} (const QPoint \&screen\+Pos)
+\begin{DoxyCompactList}\small\item\em Convertit des coordonnées écran en coordonnées géographiques. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapWidget_ae76b470447901f89076b2bb6c652a757}{mouse\+Double\+Click\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de double-\/clic pour zoomer sur un point. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_a5f8bd5f995e15b66ac48b7fbb9243726}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de dessin du widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_ab592d95fedf75d119f24d735cee48731}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de redimensionnement du widget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_aa48e5f8c7c771113afef4c63d8c0f6c4}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de clic de souris pour permettre le déplacement de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_ac4fa5570db0c7035e90f990ae9c0ea27}{mouse\+Move\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de déplacement de souris pour permettre le déplacement de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_a88af0745f1ebbbdd1b5d48518dbcd4d9}{mouse\+Release\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de relâchement de souris pour terminer le déplacement de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_a417abfa08f513ccdb2d205145891985d}{wheel\+Event}} (QWheel\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère l\textquotesingle{}événement de la molette de souris pour permettre le zoom. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapWidget_a4f94284b90d64971dfc53c48a68447ab}{on\+Tile\+Downloaded}} (QNetwork\+Reply \texorpdfstring{$\ast$}{*}reply)
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsqu\textquotesingle{}une tuile a été téléchargée. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMapWidget_ab89fc473ede5f15551123a39f836226f}\label{classMapWidget_ab89fc473ede5f15551123a39f836226f} 
+void {\bfseries load\+Tiles} ()
+\begin{DoxyCompactList}\small\item\em Charge les tuiles nécessaires pour afficher la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a81d821a4bc2ff4fade54d4534c5dfb4f}\label{classMapWidget_a81d821a4bc2ff4fade54d4534c5dfb4f} 
+void {\bfseries render\+Full\+View} ()
+\begin{DoxyCompactList}\small\item\em Prépare l\textquotesingle{}affichage complet de la carte. \end{DoxyCompactList}\item 
+QPoint \mbox{\hyperlink{classMapWidget_a1f933457c37c5cba27bc6cac314f9ad5}{lon\+Lat\+To\+Tile}} (double lon, double lat, int zoom)
+\begin{DoxyCompactList}\small\item\em Convertit des coordonnées géographiques en coordonnées de tuile. \end{DoxyCompactList}\item 
+QPointF \mbox{\hyperlink{classMapWidget_abfbeaa2df029ec4bd145c7ed078568ff}{lon\+Lat\+To\+TileF}} (double lon, double lat, int zoom)
+\begin{DoxyCompactList}\small\item\em Convertit des coordonnées géographiques en coordonnées de tuile (version flottante). \end{DoxyCompactList}\item 
+QPair$<$ double, double $>$ \mbox{\hyperlink{classMapWidget_adad42fd0f581e23cb40394eadced8162}{tile\+To\+Lon\+Lat}} (int x, int y, int zoom)
+\begin{DoxyCompactList}\small\item\em Convertit des coordonnées de tuile en coordonnées géographiques. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapWidget_a1bbb7069c23580016ac4fad9800f4f5e}{download\+Tile}} (int x, int y, int zoom)
+\begin{DoxyCompactList}\small\item\em Télécharge une tuile depuis le serveur Open\+Street\+Map. \end{DoxyCompactList}\item 
+QString \mbox{\hyperlink{classMapWidget_a80b10d05dfd2ed27db4c4cdaa6d5d6e5}{tile\+File\+Path}} (int x, int y, int zoom)
+\begin{DoxyCompactList}\small\item\em Construit le chemin du fichier local pour une tuile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMapWidget_a567ab62e3579669c9caa81ceac75c264}\label{classMapWidget_a567ab62e3579669c9caa81ceac75c264} 
+\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+map\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a969d17e3abd13452d5e97e53bea4272b}\label{classMapWidget_a969d17e3abd13452d5e97e53bea4272b} 
+\mbox{\hyperlink{classMapController}{Map\+Controller}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+map\+Controller}
+\begin{DoxyCompactList}\small\item\em Contrôleur pour les interactions avec la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a8692bc5163c4709fba32c41a32e0d235}\label{classMapWidget_a8692bc5163c4709fba32c41a32e0d235} 
+QVector$<$ QPixmap $>$ {\bfseries \+\_\+tiles}
+\begin{DoxyCompactList}\small\item\em Tuiles à afficher. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_ae12335f9e119b672ef8692e8381b5560}\label{classMapWidget_ae12335f9e119b672ef8692e8381b5560} 
+QVector$<$ QPoint $>$ {\bfseries \+\_\+tile\+Positions}
+\begin{DoxyCompactList}\small\item\em Positions des tuiles sur la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_aea10b875e543c83cf2b03112cf03ee4f}\label{classMapWidget_aea10b875e543c83cf2b03112cf03ee4f} 
+QNetwork\+Access\+Manager {\bfseries \+\_\+network\+Manager}
+\begin{DoxyCompactList}\small\item\em Gestionnaire de réseau pour télécharger les tuiles. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a29a59aaa52b45c6c9dcda3134afa0c25}\label{classMapWidget_a29a59aaa52b45c6c9dcda3134afa0c25} 
+int {\bfseries \+\_\+pending\+Requests}
+\begin{DoxyCompactList}\small\item\em Nombre de requêtes en attente. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a8f0150449bac4f18d82f99ce01b133e8}\label{classMapWidget_a8f0150449bac4f18d82f99ce01b133e8} 
+QPoint {\bfseries \+\_\+last\+Mouse\+Pos}
+\begin{DoxyCompactList}\small\item\em Dernière position de la souris pour le déplacement. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a081af32c457007c63d13eaab4b607ac2}\label{classMapWidget_a081af32c457007c63d13eaab4b607ac2} 
+bool {\bfseries \+\_\+is\+Dragging}
+\begin{DoxyCompactList}\small\item\em Indique si la carte est en train d\textquotesingle{}être déplacée. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a01ec4f2f49e730da833225814d797d0c}\label{classMapWidget_a01ec4f2f49e730da833225814d797d0c} 
+QPixmap {\bfseries \+\_\+cached\+View}
+\begin{DoxyCompactList}\small\item\em Vue mise en cache pour le glissement rapide. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a1ec6a0dfddfaca6a1cd1acda4144cde3}\label{classMapWidget_a1ec6a0dfddfaca6a1cd1acda4144cde3} 
+QPoint {\bfseries \+\_\+drag\+Offset}
+\begin{DoxyCompactList}\small\item\em Décalage actuel pendant le glissement. \end{DoxyCompactList}\item 
+\Hypertarget{classMapWidget_a236ccdff2f73000122c7e29cfe26b2e4}\label{classMapWidget_a236ccdff2f73000122c7e29cfe26b2e4} 
+bool {\bfseries \+\_\+need\+Full\+Refresh}
+\begin{DoxyCompactList}\small\item\em Indique si un full\+Refresh est nécessaire. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Widget personnalisé pour l\textquotesingle{}affichage de tuiles cartographiques. 
+
+Cette classe gère le téléchargement et l\textquotesingle{}affichage d\textquotesingle{}une carte composée de tuiles cartographiques Open\+Street\+Map. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMapWidget_aa214385067e88a12f9a3e57e10b44c21}\index{MapWidget@{MapWidget}!MapWidget@{MapWidget}}
+\index{MapWidget@{MapWidget}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{MapWidget()}{MapWidget()}}
+{\footnotesize\ttfamily \label{classMapWidget_aa214385067e88a12f9a3e57e10b44c21} 
+Map\+Widget\+::\+Map\+Widget (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}}]{map\+Model}{, }\item[{\mbox{\hyperlink{classMapController}{Map\+Controller}} \texorpdfstring{$\ast$}{*}}]{map\+Controller}{, }\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Constructeur du widget d\textquotesingle{}affichage de carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+Model} & Modèle de données pour la carte \\
+\hline
+{\em map\+Controller} & Contrôleur pour les interactions avec la carte \\
+\hline
+{\em parent} & Widget parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMapWidget_a1bbb7069c23580016ac4fad9800f4f5e}\index{MapWidget@{MapWidget}!downloadTile@{downloadTile}}
+\index{downloadTile@{downloadTile}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{downloadTile()}{downloadTile()}}
+{\footnotesize\ttfamily \label{classMapWidget_a1bbb7069c23580016ac4fad9800f4f5e} 
+void Map\+Widget\+::download\+Tile (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Télécharge une tuile depuis le serveur Open\+Street\+Map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X de la tuile \\
+\hline
+{\em y} & Coordonnée Y de la tuile \\
+\hline
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_a1f933457c37c5cba27bc6cac314f9ad5}\index{MapWidget@{MapWidget}!lonLatToTile@{lonLatToTile}}
+\index{lonLatToTile@{lonLatToTile}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{lonLatToTile()}{lonLatToTile()}}
+{\footnotesize\ttfamily \label{classMapWidget_a1f933457c37c5cba27bc6cac314f9ad5} 
+QPoint Map\+Widget\+::lon\+Lat\+To\+Tile (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convertit des coordonnées géographiques en coordonnées de tuile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude \\
+\hline
+{\em lat} & Latitude \\
+\hline
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordonnées de la tuile (x, y) 
+\end{DoxyReturn}
+\Hypertarget{classMapWidget_abfbeaa2df029ec4bd145c7ed078568ff}\index{MapWidget@{MapWidget}!lonLatToTileF@{lonLatToTileF}}
+\index{lonLatToTileF@{lonLatToTileF}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{lonLatToTileF()}{lonLatToTileF()}}
+{\footnotesize\ttfamily \label{classMapWidget_abfbeaa2df029ec4bd145c7ed078568ff} 
+QPointF Map\+Widget\+::lon\+Lat\+To\+TileF (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convertit des coordonnées géographiques en coordonnées de tuile (version flottante). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude \\
+\hline
+{\em lat} & Latitude \\
+\hline
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordonnées de la tuile (x, y) en flottant 
+\end{DoxyReturn}
+\Hypertarget{classMapWidget_ae76b470447901f89076b2bb6c652a757}\index{MapWidget@{MapWidget}!mouseDoubleClickEvent@{mouseDoubleClickEvent}}
+\index{mouseDoubleClickEvent@{mouseDoubleClickEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{mouseDoubleClickEvent()}{mouseDoubleClickEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_ae76b470447901f89076b2bb6c652a757} 
+void Map\+Widget\+::mouse\+Double\+Click\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de double-\/clic pour zoomer sur un point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de double-\/clic \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_ac4fa5570db0c7035e90f990ae9c0ea27}\index{MapWidget@{MapWidget}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_ac4fa5570db0c7035e90f990ae9c0ea27} 
+void Map\+Widget\+::mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de déplacement de souris pour permettre le déplacement de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de déplacement de souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_a04ac8a5a0da413ec8973c37061125b0d}\index{MapWidget@{MapWidget}!mousePositionChanged@{mousePositionChanged}}
+\index{mousePositionChanged@{mousePositionChanged}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{mousePositionChanged}{mousePositionChanged}}
+{\footnotesize\ttfamily \label{classMapWidget_a04ac8a5a0da413ec8973c37061125b0d} 
+void Map\+Widget\+::mouse\+Position\+Changed (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal émis lorsque la position de la souris change sur la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude \\
+\hline
+{\em lat} & Latitude \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_aa48e5f8c7c771113afef4c63d8c0f6c4}\index{MapWidget@{MapWidget}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_aa48e5f8c7c771113afef4c63d8c0f6c4} 
+void Map\+Widget\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de clic de souris pour permettre le déplacement de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de clic de souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_a88af0745f1ebbbdd1b5d48518dbcd4d9}\index{MapWidget@{MapWidget}!mouseReleaseEvent@{mouseReleaseEvent}}
+\index{mouseReleaseEvent@{mouseReleaseEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{mouseReleaseEvent()}{mouseReleaseEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_a88af0745f1ebbbdd1b5d48518dbcd4d9} 
+void Map\+Widget\+::mouse\+Release\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de relâchement de souris pour terminer le déplacement de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de relâchement de souris \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_a4f94284b90d64971dfc53c48a68447ab}\index{MapWidget@{MapWidget}!onTileDownloaded@{onTileDownloaded}}
+\index{onTileDownloaded@{onTileDownloaded}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{onTileDownloaded}{onTileDownloaded}}
+{\footnotesize\ttfamily \label{classMapWidget_a4f94284b90d64971dfc53c48a68447ab} 
+void Map\+Widget\+::on\+Tile\+Downloaded (\begin{DoxyParamCaption}\item[{QNetwork\+Reply \texorpdfstring{$\ast$}{*}}]{reply}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Slot appelé lorsqu\textquotesingle{}une tuile a été téléchargée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reply} & Réponse du serveur contenant la tuile \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_a5f8bd5f995e15b66ac48b7fbb9243726}\index{MapWidget@{MapWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_a5f8bd5f995e15b66ac48b7fbb9243726} 
+void Map\+Widget\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de dessin du widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de dessin \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_ab592d95fedf75d119f24d735cee48731}\index{MapWidget@{MapWidget}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_ab592d95fedf75d119f24d735cee48731} 
+void Map\+Widget\+::resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de redimensionnement du widget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de redimensionnement \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapWidget_aee458161ad1a9d70b216e3ab4fa1b69b}\index{MapWidget@{MapWidget}!screenToLonLat@{screenToLonLat}}
+\index{screenToLonLat@{screenToLonLat}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{screenToLonLat()}{screenToLonLat()}}
+{\footnotesize\ttfamily \label{classMapWidget_aee458161ad1a9d70b216e3ab4fa1b69b} 
+QPair$<$ double, double $>$ Map\+Widget\+::screen\+To\+Lon\+Lat (\begin{DoxyParamCaption}\item[{const QPoint \&}]{screen\+Pos}{}\end{DoxyParamCaption})}
+
+
+
+Convertit des coordonnées écran en coordonnées géographiques. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em screen\+Pos} & Position sur l\textquotesingle{}écran \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordonnées géographiques (longitude, latitude) 
+\end{DoxyReturn}
+\Hypertarget{classMapWidget_a80b10d05dfd2ed27db4c4cdaa6d5d6e5}\index{MapWidget@{MapWidget}!tileFilePath@{tileFilePath}}
+\index{tileFilePath@{tileFilePath}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{tileFilePath()}{tileFilePath()}}
+{\footnotesize\ttfamily \label{classMapWidget_a80b10d05dfd2ed27db4c4cdaa6d5d6e5} 
+QString Map\+Widget\+::tile\+File\+Path (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Construit le chemin du fichier local pour une tuile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X de la tuile \\
+\hline
+{\em y} & Coordonnée Y de la tuile \\
+\hline
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Chemin du fichier local 
+\end{DoxyReturn}
+\Hypertarget{classMapWidget_adad42fd0f581e23cb40394eadced8162}\index{MapWidget@{MapWidget}!tileToLonLat@{tileToLonLat}}
+\index{tileToLonLat@{tileToLonLat}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{tileToLonLat()}{tileToLonLat()}}
+{\footnotesize\ttfamily \label{classMapWidget_adad42fd0f581e23cb40394eadced8162} 
+QPair$<$ double, double $>$ Map\+Widget\+::tile\+To\+Lon\+Lat (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convertit des coordonnées de tuile en coordonnées géographiques. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X de la tuile \\
+\hline
+{\em y} & Coordonnée Y de la tuile \\
+\hline
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Coordonnées géographiques (longitude, latitude) 
+\end{DoxyReturn}
+\Hypertarget{classMapWidget_a417abfa08f513ccdb2d205145891985d}\index{MapWidget@{MapWidget}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!MapWidget@{MapWidget}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}}
+{\footnotesize\ttfamily \label{classMapWidget_a417abfa08f513ccdb2d205145891985d} 
+void Map\+Widget\+::wheel\+Event (\begin{DoxyParamCaption}\item[{QWheel\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère l\textquotesingle{}événement de la molette de souris pour permettre le zoom. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Événement de la molette de souris \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+view/mapwidget.\+h\item 
+view/mapwidget.\+cpp\end{DoxyCompactItemize}

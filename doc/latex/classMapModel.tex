@@ -1,0 +1,171 @@
+\doxysection{Map\+Model Class Reference}
+\hypertarget{classMapModel}{}\label{classMapModel}\index{MapModel@{MapModel}}
+
+
+Modèle de données pour la carte.  
+
+
+
+
+{\ttfamily \#include $<$mapmodel.\+h$>$}
+
+Inheritance diagram for Map\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMapModel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapModel_a8ecc639df254fd30e3e8e6f6c8a4808d}{center\+Changed}} (double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Signal émis lorsque le centre de la carte change. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapModel_a998cfb80e015cb3d62e72598e1700c6b}{zoom\+Changed}} (int zoom)
+\begin{DoxyCompactList}\small\item\em Signal émis lorsque le niveau de zoom change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMapModel_a962e8166c79eb17e6573cd00f5076819}{Map\+Model}} (QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur du modèle de carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapModel_a3c83524db35e7b4425b8bae670a63c01}{set\+Center}} (double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Définit le centre de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapModel_a0f1f7b54f9ec80368c0767ddfaa30792}{set\+Zoom}} (int zoom)
+\begin{DoxyCompactList}\small\item\em Définit le niveau de zoom de la carte. \end{DoxyCompactList}\item 
+QPointF \mbox{\hyperlink{classMapModel_a1905a1415bf8d5c957397b00e13292dd}{get\+Center}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le centre de la carte. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMapModel_ae311907c0f0d1467a55d596f6604bef5}{get\+Zoom}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le niveau de zoom de la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMapModel_a3a749796b2e2f6976326d10e0eea478f}\label{classMapModel_a3a749796b2e2f6976326d10e0eea478f} 
+int {\bfseries \+\_\+zoom}
+\begin{DoxyCompactList}\small\item\em Niveau de zoom de la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapModel_a4edb42d4818c96eab3362abebbec2a4d}\label{classMapModel_a4edb42d4818c96eab3362abebbec2a4d} 
+double {\bfseries \+\_\+center\+Lon}
+\begin{DoxyCompactList}\small\item\em Longitude du centre de la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMapModel_acc4f9e79c3bff8e0156c340c78f759e8}\label{classMapModel_acc4f9e79c3bff8e0156c340c78f759e8} 
+double {\bfseries \+\_\+center\+Lat}
+\begin{DoxyCompactList}\small\item\em Latitude du centre de la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Modèle de données pour la carte. 
+
+Cette classe gère les données de la carte, comme le centre, le niveau de zoom, etc. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMapModel_a962e8166c79eb17e6573cd00f5076819}\index{MapModel@{MapModel}!MapModel@{MapModel}}
+\index{MapModel@{MapModel}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{MapModel()}{MapModel()}}
+{\footnotesize\ttfamily \label{classMapModel_a962e8166c79eb17e6573cd00f5076819} 
+Map\+Model\+::\+Map\+Model (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur du modèle de carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Objet parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMapModel_a8ecc639df254fd30e3e8e6f6c8a4808d}\index{MapModel@{MapModel}!centerChanged@{centerChanged}}
+\index{centerChanged@{centerChanged}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{centerChanged}{centerChanged}}
+{\footnotesize\ttfamily \label{classMapModel_a8ecc639df254fd30e3e8e6f6c8a4808d} 
+void Map\+Model\+::center\+Changed (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal émis lorsque le centre de la carte change. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude du centre \\
+\hline
+{\em lat} & Latitude du centre \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapModel_a1905a1415bf8d5c957397b00e13292dd}\index{MapModel@{MapModel}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{getCenter()}{getCenter()}}
+{\footnotesize\ttfamily \label{classMapModel_a1905a1415bf8d5c957397b00e13292dd} 
+QPointF Map\+Model\+::get\+Center (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère le centre de la carte. 
+
+\begin{DoxyReturn}{Returns}
+Coordonnées du centre (longitude, latitude) 
+\end{DoxyReturn}
+\Hypertarget{classMapModel_ae311907c0f0d1467a55d596f6604bef5}\index{MapModel@{MapModel}!getZoom@{getZoom}}
+\index{getZoom@{getZoom}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{getZoom()}{getZoom()}}
+{\footnotesize\ttfamily \label{classMapModel_ae311907c0f0d1467a55d596f6604bef5} 
+int Map\+Model\+::get\+Zoom (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère le niveau de zoom de la carte. 
+
+\begin{DoxyReturn}{Returns}
+Niveau de zoom 
+\end{DoxyReturn}
+\Hypertarget{classMapModel_a3c83524db35e7b4425b8bae670a63c01}\index{MapModel@{MapModel}!setCenter@{setCenter}}
+\index{setCenter@{setCenter}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{setCenter()}{setCenter()}}
+{\footnotesize\ttfamily \label{classMapModel_a3c83524db35e7b4425b8bae670a63c01} 
+void Map\+Model\+::set\+Center (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{}\end{DoxyParamCaption})}
+
+
+
+Définit le centre de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude du centre \\
+\hline
+{\em lat} & Latitude du centre \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapModel_a0f1f7b54f9ec80368c0767ddfaa30792}\index{MapModel@{MapModel}!setZoom@{setZoom}}
+\index{setZoom@{setZoom}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{setZoom()}{setZoom()}}
+{\footnotesize\ttfamily \label{classMapModel_a0f1f7b54f9ec80368c0767ddfaa30792} 
+void Map\+Model\+::set\+Zoom (\begin{DoxyParamCaption}\item[{int}]{zoom}{}\end{DoxyParamCaption})}
+
+
+
+Définit le niveau de zoom de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapModel_a998cfb80e015cb3d62e72598e1700c6b}\index{MapModel@{MapModel}!zoomChanged@{zoomChanged}}
+\index{zoomChanged@{zoomChanged}!MapModel@{MapModel}}
+\doxysubsubsection{\texorpdfstring{zoomChanged}{zoomChanged}}
+{\footnotesize\ttfamily \label{classMapModel_a998cfb80e015cb3d62e72598e1700c6b} 
+void Map\+Model\+::zoom\+Changed (\begin{DoxyParamCaption}\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Signal émis lorsque le niveau de zoom change. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/mapmodel.\+h\item 
+model/mapmodel.\+cpp\end{DoxyCompactItemize}

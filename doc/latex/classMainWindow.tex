@@ -1,0 +1,214 @@
+\doxysection{Main\+Window Class Reference}
+\hypertarget{classMainWindow}{}\label{classMainWindow}\index{MainWindow@{MainWindow}}
+
+
+Classe principale de l\textquotesingle{}interface utilisateur.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMainWindow}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}\label{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Main\+Window} ()
+\begin{DoxyCompactList}\small\item\em Destructeur de la classe \doxylink{classMainWindow}{Main\+Window}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMainWindow_a52948c392f1a5865d78a90c77e3d1920}\label{classMainWindow_a52948c392f1a5865d78a90c77e3d1920} 
+void {\bfseries on\+Quit\+Triggered} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur clique sur "{}\+Quitter"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a8f5539048a317bb31b5c1d8b7415d971}\label{classMainWindow_a8f5539048a317bb31b5c1d8b7415d971} 
+void {\bfseries on\+Preferences\+Triggered} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur clique sur "{}\+Préférences"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a7c2053d323b654c736dd3e6344c7207e}\label{classMainWindow_a7c2053d323b654c736dd3e6344c7207e} 
+void {\bfseries on\+Manual\+Triggered} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur clique sur "{}\+Manuel"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_abb28b4bc4e433b2bf7887d90d463a0db}\label{classMainWindow_abb28b4bc4e433b2bf7887d90d463a0db} 
+void {\bfseries on\+About\+Triggered} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur clique sur "{}À propos"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a00074c539abb424d3e144aa9b1dd1b62}\label{classMainWindow_a00074c539abb424d3e144aa9b1dd1b62} 
+void {\bfseries on\+Search\+Button\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur clique sur le bouton Search. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a784a164e7e2486e58b8be0200621083f}{on\+Places\+Updated}} (const QString\+List \&place\+Names)
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque la liste des lieux est mise à jour. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_ae6b371d7ca26dfcd37016bd943e99b6f}{on\+Search\+Error}} (const QString \&error\+Message)
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsqu\textquotesingle{}une erreur survient lors de la recherche. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_aa4f0bd4ea4a621b00ffb2084d2baa2c6}{on\+List\+Item\+Selected}} (QList\+Widget\+Item \texorpdfstring{$\ast$}{*}item)
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque l\textquotesingle{}utilisateur sélectionne un lieu dans la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMainWindow_a73242c2a5a0b48a3630b687977352fd6}{on\+Mouse\+Position\+Changed}} (double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Slot appelé lorsque la position de la souris change sur la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMainWindow_aa353e8faed952a95e2fc62d7a5018a89}\label{classMainWindow_aa353e8faed952a95e2fc62d7a5018a89} 
+void {\bfseries setup\+Ui} ()
+\begin{DoxyCompactList}\small\item\em Configure l\textquotesingle{}interface utilisateur complète. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_aa4907b0251d305659e403c62921ef331}\label{classMainWindow_aa4907b0251d305659e403c62921ef331} 
+void {\bfseries create\+Menus} ()
+\begin{DoxyCompactList}\small\item\em Crée et configure les menus de l\textquotesingle{}application. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a5bc37eca25ba4273aac159eef129a7b3}\label{classMainWindow_a5bc37eca25ba4273aac159eef129a7b3} 
+void {\bfseries create\+Widgets} ()
+\begin{DoxyCompactList}\small\item\em Crée et initialise tous les widgets de l\textquotesingle{}interface. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_af56de9a06a0ca0f9f44145cb25c4d119}\label{classMainWindow_af56de9a06a0ca0f9f44145cb25c4d119} 
+void {\bfseries setup\+Layouts} ()
+\begin{DoxyCompactList}\small\item\em Configure les layouts pour organiser les widgets. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a26701e222d5c0262f41b76b7b0cdd47e}\label{classMainWindow_a26701e222d5c0262f41b76b7b0cdd47e} 
+void {\bfseries connect\+Signals\+Slots} ()
+\begin{DoxyCompactList}\small\item\em Connecte les signaux aux slots appropriés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMainWindow_a28ff666a131e52724230da24c83a3d05}\label{classMainWindow_a28ff666a131e52724230da24c83a3d05} 
+QMenu \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+file\+\_\+menu}
+\begin{DoxyCompactList}\small\item\em Menu Fichier. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_ac3824ea2e33797cc629dcf064c01f09b}\label{classMainWindow_ac3824ea2e33797cc629dcf064c01f09b} 
+QMenu \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+help\+\_\+menu}
+\begin{DoxyCompactList}\small\item\em Menu Aide. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a12069c5514bf6629f566fde12b0bd5ac}\label{classMainWindow_a12069c5514bf6629f566fde12b0bd5ac} 
+QAction \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+pref\+\_\+action}
+\begin{DoxyCompactList}\small\item\em Action pour l\textquotesingle{}item de menu Préférences. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a8888c912f5836157ef56e10e2b8b8c2b}\label{classMainWindow_a8888c912f5836157ef56e10e2b8b8c2b} 
+QAction \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+quit\+\_\+action}
+\begin{DoxyCompactList}\small\item\em Action pour l\textquotesingle{}item de menu Quit. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_af1872ef50a3a421fd5b814235825a045}\label{classMainWindow_af1872ef50a3a421fd5b814235825a045} 
+QAction \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+manual\+\_\+action}
+\begin{DoxyCompactList}\small\item\em Action pour l\textquotesingle{}item de menu Manual. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a9a053fcce97d8960c9da8f69b60010ef}\label{classMainWindow_a9a053fcce97d8960c9da8f69b60010ef} 
+QAction \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+about\+\_\+action}
+\begin{DoxyCompactList}\small\item\em Action pour l\textquotesingle{}item de menu About. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a8beba7b93b7a9e7d1252fd34a526f385}\label{classMainWindow_a8beba7b93b7a9e7d1252fd34a526f385} 
+QScoped\+Pointer$<$ QGroup\+Box $>$ {\bfseries \+\_\+main\+\_\+widget}
+\begin{DoxyCompactList}\small\item\em Widget principal contenant tout. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a3e6eaff07b9dbdbf1289aff8de3ff83b}\label{classMainWindow_a3e6eaff07b9dbdbf1289aff8de3ff83b} 
+QScoped\+Pointer$<$ QPush\+Button $>$ {\bfseries \+\_\+button}
+\begin{DoxyCompactList}\small\item\em Bouton "{}\+Search"{}. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a50bd269787c5f71af67ad5fdd33abff9}\label{classMainWindow_a50bd269787c5f71af67ad5fdd33abff9} 
+QScoped\+Pointer$<$ QLine\+Edit $>$ {\bfseries \+\_\+text\+\_\+edit}
+\begin{DoxyCompactList}\small\item\em Champ de texte éditable. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a0e1da4a49b51eb0b97d638126cb59fb5}\label{classMainWindow_a0e1da4a49b51eb0b97d638126cb59fb5} 
+QScoped\+Pointer$<$ QList\+Widget $>$ {\bfseries \+\_\+list}
+\begin{DoxyCompactList}\small\item\em Liste des lieux. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_acb7536b0dae425c8e32c04b03bcc8d61}\label{classMainWindow_acb7536b0dae425c8e32c04b03bcc8d61} 
+QScoped\+Pointer$<$ \mbox{\hyperlink{classMapWidget}{Map\+Widget}} $>$ {\bfseries \+\_\+map\+\_\+widget}
+\begin{DoxyCompactList}\small\item\em Widget affichant la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_aa8a5e1a200c836afdb68f20ae28c9dd4}\label{classMainWindow_aa8a5e1a200c836afdb68f20ae28c9dd4} 
+QLabel \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+coords\+Label}
+\begin{DoxyCompactList}\small\item\em Label pour afficher les coordonnées dans la barre de statut. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_afffcb78efe33f2661c74b2d456745aa0}\label{classMainWindow_afffcb78efe33f2661c74b2d456745aa0} 
+QScoped\+Pointer$<$ \mbox{\hyperlink{classPlaceModel}{Place\+Model}} $>$ {\bfseries \+\_\+place\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour les lieux. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a5ae2bc6195e788de65d068ff6b6dabcd}\label{classMainWindow_a5ae2bc6195e788de65d068ff6b6dabcd} 
+QScoped\+Pointer$<$ \mbox{\hyperlink{classMapModel}{Map\+Model}} $>$ {\bfseries \+\_\+map\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour la carte. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_a0857774279d8802556f0e06dfcdfdc13}\label{classMainWindow_a0857774279d8802556f0e06dfcdfdc13} 
+QScoped\+Pointer$<$ \mbox{\hyperlink{classSearchController}{Search\+Controller}} $>$ {\bfseries \+\_\+search\+Controller}
+\begin{DoxyCompactList}\small\item\em Contrôleur pour la recherche. \end{DoxyCompactList}\item 
+\Hypertarget{classMainWindow_abd8f230d075d30fd7ad447437d243b9c}\label{classMainWindow_abd8f230d075d30fd7ad447437d243b9c} 
+QScoped\+Pointer$<$ \mbox{\hyperlink{classMapController}{Map\+Controller}} $>$ {\bfseries \+\_\+map\+Controller}
+\begin{DoxyCompactList}\small\item\em Contrôleur pour la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe principale de l\textquotesingle{}interface utilisateur. 
+
+Cette classe gère la fenêtre principale de l\textquotesingle{}application, comprenant les menus, les widgets et les layouts. Elle affiche une liste de villes et une carte du monde. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMainWindow_a996c5a2b6f77944776856f08ec30858d}\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{MainWindow()}{MainWindow()}}
+{\footnotesize\ttfamily \label{classMainWindow_a996c5a2b6f77944776856f08ec30858d} 
+Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{classMainWindow}{Main\+Window}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Widget parent (nullptr par défaut). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMainWindow_aa4f0bd4ea4a621b00ffb2084d2baa2c6}\index{MainWindow@{MainWindow}!onListItemSelected@{onListItemSelected}}
+\index{onListItemSelected@{onListItemSelected}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{onListItemSelected}{onListItemSelected}}
+{\footnotesize\ttfamily \label{classMainWindow_aa4f0bd4ea4a621b00ffb2084d2baa2c6} 
+void Main\+Window\+::on\+List\+Item\+Selected (\begin{DoxyParamCaption}\item[{QList\+Widget\+Item \texorpdfstring{$\ast$}{*}}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Slot appelé lorsque l\textquotesingle{}utilisateur sélectionne un lieu dans la liste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em item} & Élément sélectionné \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMainWindow_a73242c2a5a0b48a3630b687977352fd6}\index{MainWindow@{MainWindow}!onMousePositionChanged@{onMousePositionChanged}}
+\index{onMousePositionChanged@{onMousePositionChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{onMousePositionChanged}{onMousePositionChanged}}
+{\footnotesize\ttfamily \label{classMainWindow_a73242c2a5a0b48a3630b687977352fd6} 
+void Main\+Window\+::on\+Mouse\+Position\+Changed (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Slot appelé lorsque la position de la souris change sur la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude \\
+\hline
+{\em lat} & Latitude \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMainWindow_a784a164e7e2486e58b8be0200621083f}\index{MainWindow@{MainWindow}!onPlacesUpdated@{onPlacesUpdated}}
+\index{onPlacesUpdated@{onPlacesUpdated}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{onPlacesUpdated}{onPlacesUpdated}}
+{\footnotesize\ttfamily \label{classMainWindow_a784a164e7e2486e58b8be0200621083f} 
+void Main\+Window\+::on\+Places\+Updated (\begin{DoxyParamCaption}\item[{const QString\+List \&}]{place\+Names}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Slot appelé lorsque la liste des lieux est mise à jour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em place\+Names} & Liste des noms de lieux \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMainWindow_ae6b371d7ca26dfcd37016bd943e99b6f}\index{MainWindow@{MainWindow}!onSearchError@{onSearchError}}
+\index{onSearchError@{onSearchError}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{onSearchError}{onSearchError}}
+{\footnotesize\ttfamily \label{classMainWindow_ae6b371d7ca26dfcd37016bd943e99b6f} 
+void Main\+Window\+::on\+Search\+Error (\begin{DoxyParamCaption}\item[{const QString \&}]{error\+Message}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Slot appelé lorsqu\textquotesingle{}une erreur survient lors de la recherche. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+Message} & Message d\textquotesingle{}erreur \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mainwindow_8h}{mainwindow.\+h}}\item 
+mainwindow.\+cpp\end{DoxyCompactItemize}

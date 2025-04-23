@@ -1,0 +1,51 @@
+\doxysection{placemodel.\+h}
+\hypertarget{placemodel_8h_source}{}\label{placemodel_8h_source}\index{model/placemodel.h@{model/placemodel.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ placemodel.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ PLACEMODEL\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ PLACEMODEL\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QJsonArray>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QJsonDocument>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QJsonObject>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QMap>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QNetworkAccessManager>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QNetworkReply>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QPointF>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QString>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlaceModel_aa731821cbf2eafa014658c5715a56605}{PlaceModel}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ \ \ QNetworkAccessManager\ \mbox{\hyperlink{classPlaceModel_a9c17780d398658d759a9612647bb7495}{\_networkManager}};\ }
+\DoxyCodeLine{00028\ \ \ \ \ QMap<QString,\ QPointF>\ \mbox{\hyperlink{classPlaceModel_ab4482e675a7361cece4694178af370b1}{\_placeCoordinates}};\ }
+\DoxyCodeLine{00029\ \ \ \ \ QStringList\ \mbox{\hyperlink{classPlaceModel_a973a76b68d96acbe4bdbddaf6044520a}{\_placeNames}};\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classPlaceModel_aa731821cbf2eafa014658c5715a56605}{PlaceModel}}(QObject*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlaceModel_a167d63a869ab587e5ac5029c34e16a67}{searchPlaces}}(\textcolor{keyword}{const}\ QString\&\ searchText);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ \ \ QPointF\ \mbox{\hyperlink{classPlaceModel_a7cc370286485da21f6d954f9f8527e5b}{getPlaceCoordinates}}(\textcolor{keyword}{const}\ QString\&\ placeName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00055\ \ \ \ \ QStringList\ \mbox{\hyperlink{classPlaceModel_af44d6293b06d75ef0644b0ed301ec1f9}{getPlaceNames}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPlaceModel_a843b566d8df4eba5ecd44e1b2ceb2099}{hasPlace}}(\textcolor{keyword}{const}\ QString\&\ placeName)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlaceModel_a923389e69dc867ac114e739887026006}{onSearchReply}}(QNetworkReply*\ reply);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ signals:}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlaceModel_a3d9d6e016cffc0a9fffba552f25e2cf1}{placesUpdated}}(\textcolor{keyword}{const}\ QStringList\&\ placeNames);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPlaceModel_a25483f508690c9cd72b23552a200d222}{searchError}}(\textcolor{keyword}{const}\ QString\&\ errorMessage);}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ PLACEMODEL\_H}}
+\DoxyCodeLine{00086\ }
+
+\end{DoxyCode}

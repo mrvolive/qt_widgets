@@ -1,0 +1,92 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{mainwindow_8h_source}{}\label{mainwindow_8h_source}\mbox{\hyperlink{mainwindow_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ mainwindow.h\ (adapté)}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QScopedPointer>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Déclarations\ anticipées}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }QGroupBox;}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }QPushButton;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }QLineEdit;}
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }QListWidget;}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }QListWidgetItem;}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }QMenu;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }QAction;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMapWidget}{MapWidget}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPlaceModel}{PlaceModel}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMapModel}{MapModel}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSearchController}{SearchController}};}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMapController}{MapController}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ Menus}}
+\DoxyCodeLine{00041\ \ \ \ \ QMenu*\ \mbox{\hyperlink{classMainWindow_a28ff666a131e52724230da24c83a3d05}{\_file\_menu}};\ }
+\DoxyCodeLine{00042\ \ \ \ \ QMenu*\ \mbox{\hyperlink{classMainWindow_ac3824ea2e33797cc629dcf064c01f09b}{\_help\_menu}};\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Actions}}
+\DoxyCodeLine{00045\ \ \ \ \ QAction*\ \mbox{\hyperlink{classMainWindow_a12069c5514bf6629f566fde12b0bd5ac}{\_pref\_action}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ QAction*\ \mbox{\hyperlink{classMainWindow_a8888c912f5836157ef56e10e2b8b8c2b}{\_quit\_action}};\ }
+\DoxyCodeLine{00047\ \ \ \ \ QAction*\ \mbox{\hyperlink{classMainWindow_af1872ef50a3a421fd5b814235825a045}{\_manual\_action}};\ }
+\DoxyCodeLine{00048\ \ \ \ \ QAction*\ \mbox{\hyperlink{classMainWindow_a9a053fcce97d8960c9da8f69b60010ef}{\_about\_action}};\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Widgets}}
+\DoxyCodeLine{00051\ \ \ \ \ QScopedPointer<QGroupBox>\ \mbox{\hyperlink{classMainWindow_a8beba7b93b7a9e7d1252fd34a526f385}{\_main\_widget}};\ }
+\DoxyCodeLine{00052\ \ \ \ \ QScopedPointer<QPushButton>\ \mbox{\hyperlink{classMainWindow_a3e6eaff07b9dbdbf1289aff8de3ff83b}{\_button}};\ }
+\DoxyCodeLine{00053\ \ \ \ \ QScopedPointer<QLineEdit>\ \mbox{\hyperlink{classMainWindow_a50bd269787c5f71af67ad5fdd33abff9}{\_text\_edit}};\ }
+\DoxyCodeLine{00054\ \ \ \ \ QScopedPointer<QListWidget>\ \mbox{\hyperlink{classMainWindow_a0e1da4a49b51eb0b97d638126cb59fb5}{\_list}};\ }
+\DoxyCodeLine{00055\ \ \ \ \ QScopedPointer<MapWidget>\ \mbox{\hyperlink{classMainWindow_acb7536b0dae425c8e32c04b03bcc8d61}{\_map\_widget}};\ }
+\DoxyCodeLine{00056\ \ \ \ \ QLabel*\ \mbox{\hyperlink{classMainWindow_aa8a5e1a200c836afdb68f20ae28c9dd4}{\_coordsLabel}};\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Modèles\ et\ contrôleurs}}
+\DoxyCodeLine{00059\ \ \ \ \ QScopedPointer<PlaceModel>\ \mbox{\hyperlink{classMainWindow_afffcb78efe33f2661c74b2d456745aa0}{\_placeModel}};\ }
+\DoxyCodeLine{00060\ \ \ \ \ QScopedPointer<MapModel>\ \mbox{\hyperlink{classMainWindow_a5ae2bc6195e788de65d068ff6b6dabcd}{\_mapModel}};\ }
+\DoxyCodeLine{00061\ \ \ \ \ QScopedPointer<SearchController>\ \mbox{\hyperlink{classMainWindow_a0857774279d8802556f0e06dfcdfdc13}{\_searchController}};\ }
+\DoxyCodeLine{00062\ \ \ \ \ QScopedPointer<MapController>\ \mbox{\hyperlink{classMainWindow_abd8f230d075d30fd7ad447437d243b9c}{\_mapController}};\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_aa353e8faed952a95e2fc62d7a5018a89}{setupUi}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_aa4907b0251d305659e403c62921ef331}{createMenus}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a5bc37eca25ba4273aac159eef129a7b3}{createWidgets}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_af56de9a06a0ca0f9f44145cb25c4d119}{setupLayouts}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a26701e222d5c0262f41b76b7b0cdd47e}{connectSignalsSlots}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a52948c392f1a5865d78a90c77e3d1920}{onQuitTriggered}}();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a8f5539048a317bb31b5c1d8b7415d971}{onPreferencesTriggered}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a7c2053d323b654c736dd3e6344c7207e}{onManualTriggered}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_abb28b4bc4e433b2bf7887d90d463a0db}{onAboutTriggered}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a00074c539abb424d3e144aa9b1dd1b62}{onSearchButtonClicked}}();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a784a164e7e2486e58b8be0200621083f}{onPlacesUpdated}}(\textcolor{keyword}{const}\ QStringList\&\ placeNames);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_ae6b371d7ca26dfcd37016bd943e99b6f}{onSearchError}}(\textcolor{keyword}{const}\ QString\&\ errorMessage);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_aa4f0bd4ea4a621b00ffb2084d2baa2c6}{onListItemSelected}}(QListWidgetItem*\ item);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMainWindow_a73242c2a5a0b48a3630b687977352fd6}{onMousePositionChanged}}(\textcolor{keywordtype}{double}\ lon,\ \textcolor{keywordtype}{double}\ lat);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{classMainWindow_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{classMainWindow_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

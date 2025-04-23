@@ -1,0 +1,40 @@
+\doxysection{mapmodel.\+h}
+\hypertarget{mapmodel_8h_source}{}\label{mapmodel_8h_source}\index{model/mapmodel.h@{model/mapmodel.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ mapmodel.h}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ MAPMODEL\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ MAPMODEL\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QObject>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QPointF>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMapModel_a962e8166c79eb17e6573cd00f5076819}{MapModel}}\ :\ \textcolor{keyword}{public}\ QObject\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMapModel_a3a749796b2e2f6976326d10e0eea478f}{\_zoom}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMapModel_a4edb42d4818c96eab3362abebbec2a4d}{\_centerLon}};\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classMapModel_acc4f9e79c3bff8e0156c340c78f759e8}{\_centerLat}};\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classMapModel_a962e8166c79eb17e6573cd00f5076819}{MapModel}}(QObject*\ parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapModel_a3c83524db35e7b4425b8bae670a63c01}{setCenter}}(\textcolor{keywordtype}{double}\ lon,\ \textcolor{keywordtype}{double}\ lat);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapModel_a0f1f7b54f9ec80368c0767ddfaa30792}{setZoom}}(\textcolor{keywordtype}{int}\ zoom);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ \ \ QPointF\ \mbox{\hyperlink{classMapModel_a1905a1415bf8d5c957397b00e13292dd}{getCenter}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classMapModel_ae311907c0f0d1467a55d596f6604bef5}{getZoom}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ signals:}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapModel_a8ecc639df254fd30e3e8e6f6c8a4808d}{centerChanged}}(\textcolor{keywordtype}{double}\ lon,\ \textcolor{keywordtype}{double}\ lat);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMapModel_a998cfb80e015cb3d62e72598e1700c6b}{zoomChanged}}(\textcolor{keywordtype}{int}\ zoom);}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAPMODEL\_H}}
+\DoxyCodeLine{00071\ }
+
+\end{DoxyCode}

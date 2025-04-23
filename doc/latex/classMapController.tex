@@ -1,0 +1,139 @@
+\doxysection{Map\+Controller Class Reference}
+\hypertarget{classMapController}{}\label{classMapController}\index{MapController@{MapController}}
+
+
+Contrôleur pour les interactions avec la carte.  
+
+
+
+
+{\ttfamily \#include $<$mapcontroller.\+h$>$}
+
+Inheritance diagram for Map\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMapController}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classMapController_ae899501bf2e060c02aa3a210c5754c6e}{set\+Center}} (double lon, double lat)
+\begin{DoxyCompactList}\small\item\em Définit le centre de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapController_abaf8f0d2097732e7c608b1b56950a9de}{set\+Zoom}} (int zoom)
+\begin{DoxyCompactList}\small\item\em Définit le niveau de zoom de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapController_a48332d1a50f4f75923c58887f07f1b89}{pan\+Map}} (int deltaX, int deltaY, int zoom)
+\begin{DoxyCompactList}\small\item\em Gère le déplacement de la carte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMapController_a8f16b6c96bf2519bc34c055dec686295}{zoom\+Map}} (int delta)
+\begin{DoxyCompactList}\small\item\em Gère le zoom de la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMapController_af11d867a3afacdb944a14cadde6afd2f}{Map\+Controller}} (\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}map\+Model, QObject \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur du contrôleur de carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMapController_a9e3ea74cea70c5ef49c77cdef0331017}\label{classMapController_a9e3ea74cea70c5ef49c77cdef0331017} 
+\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*} {\bfseries \+\_\+map\+Model}
+\begin{DoxyCompactList}\small\item\em Modèle de données pour la carte. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contrôleur pour les interactions avec la carte. 
+
+Cette classe coordonne les interactions entre l\textquotesingle{}interface utilisateur et le modèle de données pour la carte. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMapController_af11d867a3afacdb944a14cadde6afd2f}\index{MapController@{MapController}!MapController@{MapController}}
+\index{MapController@{MapController}!MapController@{MapController}}
+\doxysubsubsection{\texorpdfstring{MapController()}{MapController()}}
+{\footnotesize\ttfamily \label{classMapController_af11d867a3afacdb944a14cadde6afd2f} 
+Map\+Controller\+::\+Map\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMapModel}{Map\+Model}} \texorpdfstring{$\ast$}{*}}]{map\+Model}{, }\item[{QObject \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur du contrôleur de carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map\+Model} & Modèle de données pour la carte \\
+\hline
+{\em parent} & Objet parent \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMapController_a48332d1a50f4f75923c58887f07f1b89}\index{MapController@{MapController}!panMap@{panMap}}
+\index{panMap@{panMap}!MapController@{MapController}}
+\doxysubsubsection{\texorpdfstring{panMap}{panMap}}
+{\footnotesize\ttfamily \label{classMapController_a48332d1a50f4f75923c58887f07f1b89} 
+void Map\+Controller\+::pan\+Map (\begin{DoxyParamCaption}\item[{int}]{deltaX}{, }\item[{int}]{deltaY}{, }\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Gère le déplacement de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em deltaX} & Déplacement horizontal en pixels \\
+\hline
+{\em deltaY} & Déplacement vertical en pixels \\
+\hline
+{\em zoom} & Niveau de zoom actuel \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapController_ae899501bf2e060c02aa3a210c5754c6e}\index{MapController@{MapController}!setCenter@{setCenter}}
+\index{setCenter@{setCenter}!MapController@{MapController}}
+\doxysubsubsection{\texorpdfstring{setCenter}{setCenter}}
+{\footnotesize\ttfamily \label{classMapController_ae899501bf2e060c02aa3a210c5754c6e} 
+void Map\+Controller\+::set\+Center (\begin{DoxyParamCaption}\item[{double}]{lon}{, }\item[{double}]{lat}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Définit le centre de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lon} & Longitude du centre \\
+\hline
+{\em lat} & Latitude du centre \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapController_abaf8f0d2097732e7c608b1b56950a9de}\index{MapController@{MapController}!setZoom@{setZoom}}
+\index{setZoom@{setZoom}!MapController@{MapController}}
+\doxysubsubsection{\texorpdfstring{setZoom}{setZoom}}
+{\footnotesize\ttfamily \label{classMapController_abaf8f0d2097732e7c608b1b56950a9de} 
+void Map\+Controller\+::set\+Zoom (\begin{DoxyParamCaption}\item[{int}]{zoom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Définit le niveau de zoom de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zoom} & Niveau de zoom \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classMapController_a8f16b6c96bf2519bc34c055dec686295}\index{MapController@{MapController}!zoomMap@{zoomMap}}
+\index{zoomMap@{zoomMap}!MapController@{MapController}}
+\doxysubsubsection{\texorpdfstring{zoomMap}{zoomMap}}
+{\footnotesize\ttfamily \label{classMapController_a8f16b6c96bf2519bc34c055dec686295} 
+void Map\+Controller\+::zoom\+Map (\begin{DoxyParamCaption}\item[{int}]{delta}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Gère le zoom de la carte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta} & Valeur de la molette (positif pour zoom in, négatif pour zoom out) \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+controller/mapcontroller.\+h\item 
+controller/mapcontroller.\+cpp\end{DoxyCompactItemize}
