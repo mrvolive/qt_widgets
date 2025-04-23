@@ -44,11 +44,10 @@ void MapController::panMap(int deltaX, int deltaY, int zoom)
 void MapController::zoomMap(int delta)
 {
     int currentZoom = _mapModel->getZoom();
-    
+
     // Déterminer le nouveau niveau de zoom
     int newZoom = delta > 0 ? currentZoom + 1 : currentZoom - 1;
-    
+
     // Mettre à jour le zoom
     _mapModel->setZoom(newZoom);
 }
-

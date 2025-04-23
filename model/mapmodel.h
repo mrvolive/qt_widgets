@@ -68,4 +68,3 @@ signals:
 };
 
 #endif // MAPMODEL_H
-

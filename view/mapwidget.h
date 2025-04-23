@@ -1,4 +1,4 @@
-// mapwidget.h (adapté)
+// mapwidget.h
 #ifndef MAPWIDGET_H
 #define MAPWIDGET_H
 

@@ -2,13 +2,13 @@
 #ifndef PLACEMODEL_H
 #define PLACEMODEL_H
 
-#include <QObject>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QMap>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QObject>
 #include <QPointF>
 #include <QString>
 #include <QStringList>
@@ -83,4 +83,3 @@ signals:
 };
 
 #endif // PLACEMODEL_H
-

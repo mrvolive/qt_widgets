@@ -20,4 +20,3 @@ void SearchController::selectPlace(const QString& placeName)
         _mapModel->setCenter(coords.x(), coords.y());
     }
 }
-

@@ -2,8 +2,8 @@
 #ifndef SEARCHCONTROLLER_H
 #define SEARCHCONTROLLER_H
 
-#include "model/placemodel.h"
 #include "model/mapmodel.h"
+#include "model/placemodel.h"
 #include <QObject>
 
 /**
@@ -44,4 +44,3 @@ public slots:
 };
 
 #endif // SEARCHCONTROLLER_H
-

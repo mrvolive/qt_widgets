@@ -403,13 +403,12 @@ void MapWidget::mouseDoubleClickEvent(QMouseEvent* event)
         QPair<double, double> coords = screenToLonLat(event->pos());
         double lon = coords.first;
         double lat = coords.second;
-        
+
         // Centrer la carte sur ce point
         _mapController->setCenter(lon, lat);
-        
+
         // Zoomer d'un niveau
         int currentZoom = _mapModel->getZoom();
         _mapController->setZoom(currentZoom + 1);
     }
 }
-

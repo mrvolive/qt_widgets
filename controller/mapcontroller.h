@@ -57,4 +57,3 @@ public slots:
 };
 
 #endif // MAPCONTROLLER_H
-

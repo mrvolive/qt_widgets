@@ -4,7 +4,7 @@
 MapModel::MapModel(QObject* parent)
     : QObject(parent)
     , _zoom(10)
-    , _centerLon(6.839349)  // Belfort, France
+    , _centerLon(6.839349) // Belfort, France
     , _centerLat(47.64263)
 {
 }
@@ -42,4 +42,3 @@ int MapModel::getZoom() const
 {
     return _zoom;
 }
-
