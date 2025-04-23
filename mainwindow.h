@@ -6,15 +6,22 @@
  * @brief Définition de la classe MainWindow qui gère la fenêtre principale de
  * l'application.
  */
-#include "qobject.h"
 #include "mapwidget.h"
+#include "qobject.h"
 #include <QMainWindow>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QMap>
 
 class QApplication;
 class QGroupBox;
 class QLabel;
 class QLineEdit;
 class QListWidget;
+class QListWidgetItem;
 class QMenuBar;
 class QMessageBox;
 class QPushButton;
@@ -42,12 +49,17 @@ private:
   QAction *_manual_action; ///< Action pour l'item de menu Manual
   QAction *_about_action;  ///< Action pour l'item de menu About
 
+  QAction *_search_action; ///< Action pour le bouton de recherche
+
   // Widgets
   QScopedPointer<QGroupBox> _main_widget; ///< Widget principal contenant tout
   QScopedPointer<QPushButton> _button;    ///< Bouton "Search"
   QScopedPointer<QLineEdit> _text_edit;   ///< Champ de texte éditable
   QScopedPointer<QListWidget> _list;      ///< Liste des villes
-  QScopedPointer<MapWidget> _map_widget; ///< Widget affichant la carte
+  QScopedPointer<MapWidget> _map_widget;  ///< Widget affichant la carte
+
+  QNetworkAccessManager _networkManager; //< Pour les requêtes HTTP
+  QMap<QString, QPointF> _placeCoordinates;///< Associe chaque item de la liste à ses coordonnées
 
 private:
   /**
@@ -125,6 +137,10 @@ private slots:
    * répété 5 fois et concaténé avec un numéro de 1 à 5.
    */
   void onSearchButtonClicked();
+
+  void onNominatimReply(QNetworkReply *reply);
+
+  void onListItemSelected(QListWidgetItem *item);
 
 public:
   /**

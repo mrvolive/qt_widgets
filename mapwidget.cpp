@@ -1,6 +1,5 @@
 #include "mapwidget.h"
 
-#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -209,9 +208,9 @@ void MapWidget::onTileDownloaded(QNetworkReply *reply) {
         _tilePositions.append(QPoint(x, y));
 
         // Rafraîchir l'affichage
-        update();
       }
     }
+        update();
   } else {
     qDebug() << "Erreur de téléchargement de tuile:" << reply->errorString();
   }

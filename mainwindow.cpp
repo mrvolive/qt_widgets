@@ -4,11 +4,13 @@
  */
 
 #include "mainwindow.h"
+#include "qnamespace.h"
 #include <QApplication>
 #include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
+#include <QListWidgetItem>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QPushButton>
@@ -95,7 +97,7 @@ void MainWindow::createWidgets() {
   _text_edit.reset(new QLineEdit{_main_widget.get()});
 
   // List
-  QStringList places = {"New York", "Paris", "Beijing"};
+  QStringList places = {"Les résultats de votre recherche s'afficheront ici"};
   _list.reset(new QListWidget{_main_widget.get()});
   _list->addItems(places);
 
@@ -158,6 +160,11 @@ void MainWindow::connectSignalsSlots() {
   // Connexion du bouton Search
   connect(_button.get(), &QPushButton::clicked, this,
           &MainWindow::onSearchButtonClicked);
+  connect(_text_edit.get(), &QLineEdit::returnPressed, this, &MainWindow::onSearchButtonClicked);
+
+  // Connexion de la liste
+  connect(_list.get(), &QListWidget::itemClicked, this,
+          &MainWindow::onListItemSelected);
 }
 
 /**
@@ -210,18 +217,73 @@ void MainWindow::onAboutTriggered() {
  * répété 5 fois et concaténé avec un numéro de 1 à 5.
  */
 void MainWindow::onSearchButtonClicked() {
-  // Récupérer le texte du champ de saisie
   QString text = _text_edit->text().trimmed();
+  if (text.isEmpty())
+    return;
 
-  // Vérifier si le texte n'est pas vide
-  if (!text.isEmpty()) {
-    // Vider la liste actuelle
-    _list->clear();
+  // Nettoyer la liste et la map
+  _list->clear();
+  _placeCoordinates.clear();
 
-    // Ajouter 5 entrées avec le texte suivi d'un numéro
-    for (int i = 1; i <= 5; i++) {
-      QString itemText = text + " " + QString::number(i);
-      _list->addItem(itemText);
-    }
+  // Construire l'URL de recherche
+  QString encoded = QString::fromUtf8(QUrl::toPercentEncoding(text));
+  QString url =
+      QString("https://nominatim.openstreetmap.org/search?format=json&q=%1")
+          .arg(encoded);
+
+  QNetworkRequest request((QUrl(url)));
+  // IMPORTANT : ajouter un User-Agent, sinon OSM peut refuser la requête
+  request.setHeader(QNetworkRequest::UserAgentHeader,
+                    "Qt Nominatim Example/1.0");
+
+  // Envoyer la requête
+  QNetworkReply *reply = _networkManager.get(request);
+
+  // Connecter la réponse à un slot
+  connect(reply, &QNetworkReply::finished, this,
+          [this, reply]() { this->onNominatimReply(reply); });
+}
+
+void MainWindow::onNominatimReply(QNetworkReply *reply) {
+  if (reply->error() != QNetworkReply::NoError) {
+    QMessageBox::warning(this, tr("Erreur réseau"), reply->errorString());
+    reply->deleteLater();
+    return;
+  }
+
+  QByteArray data = reply->readAll();
+  reply->deleteLater();
+
+  QJsonParseError error;
+  QJsonDocument doc = QJsonDocument::fromJson(data, &error);
+  if (error.error != QJsonParseError::NoError) {
+    QMessageBox::warning(this, tr("Erreur JSON"), error.errorString());
+    return;
+  }
+
+  QJsonArray results = doc.array();
+  for (const QJsonValue &value : results) {
+    QJsonObject obj = value.toObject();
+    QString displayName = obj.value("display_name").toString();
+    double lat = obj.value("lat").toString().toDouble();
+    double lon = obj.value("lon").toString().toDouble();
+
+    // Ajouter à la liste
+    _list->addItem(displayName);
+    // Sauvegarder les coordonnées associées
+    _placeCoordinates[displayName] = QPointF(lat, lon);
+  }
+}
+
+void MainWindow::onListItemSelected(QListWidgetItem *item) {
+  QString displayName = item->text();
+  if (_placeCoordinates.contains(displayName)) {
+    QPointF coords = _placeCoordinates[displayName];
+    double lat = coords.x();
+    double lon = coords.y();
+    // Par exemple, centrer la carte :
+    _map_widget->setCenter(lon, lat);
+            _map_widget->loadTiles();  // <-- Ajout explicite
+        _map_widget->update();     // <-- Ajout explicite
   }
 }
