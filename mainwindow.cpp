@@ -1,10 +1,10 @@
 // mainwindow.cpp
 #include "mainwindow.h"
-#include "view/mapwidget.h"
-#include "model/placemodel.h"
-#include "model/mapmodel.h"
-#include "controller/searchcontroller.h"
 #include "controller/mapcontroller.h"
+#include "controller/searchcontroller.h"
+#include "model/mapmodel.h"
+#include "model/placemodel.h"
+#include "view/mapwidget.h"
 
 #include <QApplication>
 #include <QGroupBox>
@@ -16,6 +16,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QStatusBar>
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
@@ -23,11 +24,11 @@ MainWindow::MainWindow(QWidget* parent)
     // Créer les modèles
     _placeModel.reset(new PlaceModel(this));
     _mapModel.reset(new MapModel(this));
-    
+
     // Créer les contrôleurs
     _searchController.reset(new SearchController(_placeModel.get(), _mapModel.get(), this));
     _mapController.reset(new MapController(_mapModel.get(), this));
-    
+
     setupUi();
     connectSignalsSlots();
 }
@@ -41,6 +42,10 @@ void MainWindow::setupUi()
     createMenus();
     createWidgets();
     setupLayouts();
+
+    statusBar()->showMessage("");
+    _coordsLabel = new QLabel(this);
+    statusBar()->addPermanentWidget(_coordsLabel);
 }
 
 void MainWindow::createMenus()
@@ -131,6 +136,9 @@ void MainWindow::connectSignalsSlots()
     // Connexion du modèle de lieux
     connect(_placeModel.get(), &PlaceModel::placesUpdated, this, &MainWindow::onPlacesUpdated);
     connect(_placeModel.get(), &PlaceModel::searchError, this, &MainWindow::onSearchError);
+
+    // Connexion pour les coordonnées de la souris
+    connect(_map_widget.get(), &MapWidget::mousePositionChanged, this, &MainWindow::onMousePositionChanged);
 }
 
 void MainWindow::onQuitTriggered()
@@ -187,3 +195,13 @@ void MainWindow::onListItemSelected(QListWidgetItem* item)
     _searchController->selectPlace(item->text());
 }
 
+void MainWindow::onMousePositionChanged(double lon, double lat)
+{
+    // Formater les coordonnées avec 6 décimales
+    QString coordsText = QString("Lon: %1°, Lat: %2°")
+                             .arg(lon, 0, 'f', 6)
+                             .arg(lat, 0, 'f', 6);
+    
+    // Mettre à jour le label dans la barre de statut
+    _coordsLabel->setText(coordsText);
+}

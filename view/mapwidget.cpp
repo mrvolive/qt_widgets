@@ -57,6 +57,48 @@ void MapWidget::onZoomChanged()
     update();
 }
 
+QPair<double, double> MapWidget::screenToLonLat(const QPoint& screenPos)
+{
+    // Obtenir les données du modèle
+    QPointF center = _mapModel->getCenter();
+    int zoom = _mapModel->getZoom();
+
+    // Calculer la tuile centrale avec des coordonnées fractionnaires
+    QPointF centralTileF = lonLatToTileF(center.x(), center.y(), zoom);
+
+    // Taille standard d'une tuile
+    const int tileSize = 256;
+
+    // Calculer le décalage pour centrer la tuile centrale
+    int factor = 4; // Même facteur que dans renderFullView
+    int offsetX = (width() * factor - width()) / 2;
+    int offsetY = (height() * factor - height()) / 2;
+
+    // Position du centre de l'écran
+    int centerX = width() / 2;
+    int centerY = height() / 2;
+
+    // Calculer le décalage en pixels par rapport au centre
+    int pixelDeltaX = screenPos.x() - centerX;
+    int pixelDeltaY = screenPos.y() - centerY;
+
+    // Calculer la position en tuiles (fractionnaire)
+    double tileDeltaX = pixelDeltaX / static_cast<double>(tileSize);
+    double tileDeltaY = pixelDeltaY / static_cast<double>(tileSize);
+
+    // Calculer la tuile sous le curseur
+    double tileX = centralTileF.x() + tileDeltaX;
+    double tileY = centralTileF.y() + tileDeltaY;
+
+    // Convertir en coordonnées géographiques
+    int n = 1 << zoom;
+    double lon = tileX / n * 360.0 - 180.0;
+    double latRad = atan(sinh(M_PI * (1 - 2 * tileY / n)));
+    double lat = latRad * 180.0 / M_PI;
+
+    return qMakePair(lon, lat);
+}
+
 QPoint MapWidget::lonLatToTile(double lon, double lat, int zoom)
 {
     int n = 1 << zoom; // 2^zoom
@@ -334,6 +376,9 @@ void MapWidget::mouseMoveEvent(QMouseEvent* event)
         // Forcer un rafraîchissement immédiat
         update();
     }
+    // Émettre le signal avec les coordonnées géographiques sous le curseur
+    QPair<double, double> coords = screenToLonLat(event->pos());
+    emit mousePositionChanged(coords.first, coords.second);
 }
 
 void MapWidget::mouseReleaseEvent(QMouseEvent* event)

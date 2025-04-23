@@ -628,8 +628,8 @@ moc_mainwindow.cpp: mainwindow.h \
 	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 moc_mapwidget.cpp: view/mapwidget.h \
-		model/mapmodel.h \
 		controller/mapcontroller.h \
+		model/mapmodel.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/oli/OneDrive/Documents/CoursInfo/S4_Cpp/tp3_qt_widgets/droit_but -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtPositioning -I/usr/include/qt/QtCore -I/usr/include/c++/14.2.1 -I/usr/include/c++/14.2.1/x86_64-pc-linux-gnu -I/usr/include/c++/14.2.1/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/14.2.1/include-fixed -I/usr/include view/mapwidget.h -o moc_mapwidget.cpp
@@ -677,16 +677,16 @@ main.o: main.cpp mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
-		view/mapwidget.h \
-		model/mapmodel.h \
 		controller/mapcontroller.h \
+		model/mapmodel.h \
+		controller/searchcontroller.h \
 		model/placemodel.h \
-		controller/searchcontroller.h
+		view/mapwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 mapwidget.o: view/mapwidget.cpp view/mapwidget.h \
-		model/mapmodel.h \
-		controller/mapcontroller.h
+		controller/mapcontroller.h \
+		model/mapmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapwidget.o view/mapwidget.cpp
 
 placemodel.o: model/placemodel.cpp model/placemodel.h

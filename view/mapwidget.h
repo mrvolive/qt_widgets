@@ -2,8 +2,8 @@
 #ifndef MAPWIDGET_H
 #define MAPWIDGET_H
 
-#include "model/mapmodel.h"
 #include "controller/mapcontroller.h"
+#include "model/mapmodel.h"
 #include <QNetworkAccessManager>
 #include <QWidget>
 
@@ -26,7 +26,7 @@ class MapWidget : public QWidget {
 private:
     MapModel* _mapModel; ///< Modèle de données pour la carte
     MapController* _mapController; ///< Contrôleur pour les interactions avec la carte
-    
+
     QVector<QPixmap> _tiles; ///< Tuiles à afficher
     QVector<QPoint> _tilePositions; ///< Positions des tuiles sur la carte
     QNetworkAccessManager _networkManager; ///< Gestionnaire de réseau pour télécharger les tuiles
@@ -45,6 +45,21 @@ public:
      * @param parent Widget parent
      */
     MapWidget(MapModel* mapModel, MapController* mapController, QWidget* parent = nullptr);
+
+    /**
+     * @brief Convertit des coordonnées écran en coordonnées géographiques.
+     * @param screenPos Position sur l'écran
+     * @return Coordonnées géographiques (longitude, latitude)
+     */
+    QPair<double, double> screenToLonLat(const QPoint& screenPos);
+
+signals:
+    /**
+     * @brief Signal émis lorsque la position de la souris change sur la carte.
+     * @param lon Longitude
+     * @param lat Latitude
+     */
+    void mousePositionChanged(double lon, double lat);
 
 public slots:
     /**
@@ -158,4 +173,3 @@ private slots:
 };
 
 #endif // MAPWIDGET_H
-

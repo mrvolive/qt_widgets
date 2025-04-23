@@ -8,6 +8,7 @@
  */
 #include <QMainWindow>
 #include <QScopedPointer>
+#include <QLabel>
 
 // Déclarations anticipées
 class QGroupBox;
@@ -52,6 +53,7 @@ private:
     QScopedPointer<QLineEdit> _text_edit; ///< Champ de texte éditable
     QScopedPointer<QListWidget> _list; ///< Liste des lieux
     QScopedPointer<MapWidget> _map_widget; ///< Widget affichant la carte
+    QLabel* _coordsLabel; ///< Label pour afficher les coordonnées dans la barre de statut
 
     // Modèles et contrôleurs
     QScopedPointer<PlaceModel> _placeModel; ///< Modèle de données pour les lieux
@@ -128,6 +130,13 @@ private slots:
      * @param item Élément sélectionné
      */
     void onListItemSelected(QListWidgetItem* item);
+
+    /**
+     * @brief Slot appelé lorsque la position de la souris change sur la carte.
+     * @param lon Longitude
+     * @param lat Latitude
+     */
+    void onMousePositionChanged(double lon, double lat);
 
 public:
     /**
