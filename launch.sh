@@ -1,2 +1,2 @@
 #!/bin/bash
-bear -- make && make clean && ./droit_but
+make && make clean && ./droit_but
